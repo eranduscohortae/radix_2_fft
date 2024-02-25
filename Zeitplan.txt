@@ -1,7 +1,13 @@
 /// 11.03.2024 ///
 /// Code fertig ///
 
-
+1. Radix 2 Algorithmus. Wie funktioniert dieser ?
+2. Welche Algorithmen brauchen wir hierfür ? -> Cordic
+3. Datenflussdiagramm
+4. Rechenwerk realisieren
+5. UART - Schnittstelle zum Versenden der Fourier-Koeffizienten
+6. ADC für den Test via Signalgenerator
+7. ( Filterung des Signals -> FIR und Ausgabe über GPIO)
 
 /// 18.03.2024 ///
 /// Projektabgabe ///
