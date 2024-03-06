@@ -4,14 +4,22 @@ module fft_top(
 
 					input start_i,
 
-					input [15:0] x_0_i,
-					input [15:0] x_1_i,
-					input [15:0] x_2_i,
-					input [15:0] x_3_i,
-					input [15:0] x_4_i,
-					input [15:0] x_5_i,
-					input [15:0] x_6_i,
-					input [15:0] x_7_i,
+					input [15:0] x_0_R_i,
+					input [15:0] x_0_I_i,
+					input [15:0] x_1_R_i,
+					input [15:0] x_1_I_i,
+					input [15:0] x_2_R_i,
+					input [15:0] x_2_I_i,
+					input [15:0] x_3_R_i,
+					input [15:0] x_3_I_i,
+					input [15:0] x_4_R_i,
+					input [15:0] x_4_I_i,
+					input [15:0] x_5_R_i,
+					input [15:0] x_5_I_i,
+					input [15:0] x_6_R_i,
+					input [15:0] x_6_I_i,
+					input [15:0] x_7_R_i,
+					input [15:0] x_7_I_i,
 
 					output [15:0] X_0_R_o,
 					output [15:0] X_0_I_o,
@@ -39,12 +47,9 @@ module fft_top(
 
 
 
-wire valid_c;
-wire [25:0] wr_enable_c;
-wire [5:0]  valid_states_c;
-wire [7:0]  check_c;
-wire [47:0] alu_reg_c;
-wire [7:0]  alu_mode_c;
+wire [59:0] wr_enable_c;
+wire [63:0] alu_reg_c;
+wire [4:0]  alu_mode_c;
 
 
 
@@ -57,13 +62,11 @@ wire [7:0]  alu_mode_c;
 							.rst(rst),
 							.start_i(start_i),
 
-							.valid_i(valid_o),
-							.valid_states_i(valid_states_c),
-							.check_o(check_c),
 							.alu_reg_o(alu_reg_c),
 							.alu_mode_o(alu_mode_c),
 							.wr_enable_o(wr_enable_c),
-							.busy_o(busy_o)
+							.busy_o(busy_o),
+							.valid_o(valid_o)
 						 );
 
 
@@ -73,22 +76,26 @@ wire [7:0]  alu_mode_c;
 							.rst(rst),
 							.start_i(start_i),
 
-							.x_0_i(x_0_i),
-							.x_1_i(x_1_i),
-							.x_2_i(x_2_i),
-							.x_3_i(x_3_i),
-							.x_4_i(x_4_i),
-							.x_5_i(x_5_i),	
-							.x_6_i(x_6_i),
-							.x_7_i(x_7_i),
+							.x_0_R_i(x_0_R_i),
+							.x_0_I_i(x_0_I_i),
+							.x_1_R_i(x_1_R_i),
+							.x_1_I_i(x_1_I_i),
+							.x_2_R_i(x_2_R_i),
+							.x_2_I_i(x_2_I_i),
+							.x_3_R_i(x_3_R_i),
+							.x_3_I_i(x_3_I_i),
+							.x_4_R_i(x_4_R_i),
+							.x_4_I_i(x_4_I_i),
+							.x_5_R_i(x_5_R_i),
+							.x_5_I_i(x_5_I_i),
+							.x_6_R_i(x_6_R_i),
+							.x_6_I_i(x_6_I_i),
+							.x_7_R_i(x_7_R_i),
+							.x_7_I_i(x_7_I_i),
 
-							.check_i(check_c),
 							.alu_reg_i(alu_reg_c),
 							.alu_mode_i(alu_mode_c),
 							.wr_enable_i(wr_enable_c),
-
-							.valid_o(valid_c),
-							.valid_states_o(valid_states_c),
 
 							.X_0_R_o(X_0_R_o),
 							.X_0_I_o(X_0_I_o),
