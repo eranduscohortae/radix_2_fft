@@ -7,7 +7,7 @@ module fft_alu(
 
 					input wire signed [15:0] op_a_i,
 					input wire signed [15:0] op_b_i,
-					input wire signed [15:0] op_c_i,
+					input wire signed [31:0] op_c_i,
 					input wire [4:0] alu_mode_i,
 
 
