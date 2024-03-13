@@ -314,7 +314,7 @@ reg [15:0] S1_R0_r,  S1_I0_r,  S1_R0_p,  S1_I0_p,
            S4_R28_r, S4_I28_r, S4_R28_p, S4_I28_p,
            S4_R29_r, S4_I29_r, S4_R29_p, S4_I29_p,
            S4_R30_r, S4_I30_r, S4_R30_p, S4_I30_p,
-           S4_R31_r, S4_I31_r, S4_R31_p, S4_I31_p;
+           S4_R31_r, S4_I31_r, S4_R31_p, S4_I31_p,
 
 reg [15:0] x_0_R_r,   x_0_I_r,  x_0_R_p,   x_0_I_p,
 		   x_1_R_r,   x_1_I_r,  x_1_R_p,   x_1_I_p,
@@ -1091,7 +1091,7 @@ always @(posedge clk) begin
 		S4_R31_r 		<= 16'd0;
 		S4_I31_r  		<= 16'd0;
 
-				x_0_R_r 		<= 16'd0;
+		x_0_R_r 		<= 16'd0;
 		x_0_I_r 		<= 16'd0;
 		x_1_R_r 		<= 16'd0;
 		x_1_I_r 		<= 16'd0;
@@ -1365,6 +1365,38 @@ always @(posedge clk) begin
 		x14_I 			<= x_14_I_i;
 		x15_R 			<= x_15_R_i;
 		x15_I 			<= x_15_I_i;
+		x16_R 			<= x_16_R_i;
+		x16_I 			<= x_16_I_i;
+		x17_R 			<= x_17_R_i;
+		x17_I 			<= x_17_I_i;
+		x18_R 			<= x_18_R_i;
+		x18_I 			<= x_18_I_i;
+		x19_R 			<= x_19_R_i;
+		x19_I 			<= x_19_I_i;
+		x20_R 			<= x_20_R_i;
+		x20_I 			<= x_20_I_i;
+		x21_R 			<= x_21_R_i;
+		x21_I 			<= x_21_I_i;
+		x22_R 			<= x_22_R_i;
+		x22_I 			<= x_22_I_i;
+		x23_R 			<= x_23_R_i;
+		x23_I 			<= x_23_I_i;
+		x24_R 			<= x_24_R_i;
+		x24_I 			<= x_24_I_i;
+		x25_R 			<= x_25_R_i;
+		x25_I 			<= x_25_I_i;
+		x26_R 			<= x_26_R_i;
+		x26_I 			<= x_26_I_i;
+		x27_R 			<= x_27_R_i;
+		x27_I 			<= x_27_I_i;
+		x28_R 			<= x_28_R_i;
+		x28_I 			<= x_28_I_i;
+		x29_R 			<= x_29_R_i;
+		x29_I 			<= x_29_I_i;
+		x30_R 			<= x_30_R_i;
+		x30_I 			<= x_30_I_i;
+		x31_R 			<= x_31_R_i;
+		x31_I 			<= x_31_I_i;
 
 
 		/* persistent data */
@@ -1401,6 +1433,38 @@ always @(posedge clk) begin
 		X_14_I_r 		<= X_14_I_p;
 		X_15_R_r 		<= X_15_R_p;
 		X_15_I_r 		<= X_15_I_p;
+		X_16_R_r 		<= X_16_R_p;
+		X_16_I_r 		<= X_16_I_p;
+		X_17_R_r 		<= X_17_R_p;
+		X_17_I_r 		<= X_17_I_p;
+		X_18_R_r 		<= X_18_R_p;
+		X_18_I_r 		<= X_18_I_p;
+		X_19_R_r 		<= X_19_R_p;
+		X_19_I_r 		<= X_19_I_p;
+		X_20_R_r 		<= X_20_R_p;
+		X_20_I_r 		<= X_20_I_p;		
+		X_21_R_r 		<= X_21_R_p;
+		X_21_I_r 		<= X_21_I_p;
+		X_22_R_r 		<= X_22_R_p;
+		X_22_I_r 		<= X_22_I_p;
+		X_23_R_r 		<= X_23_R_p;
+		X_23_I_r 		<= X_23_I_p;
+		X_24_R_r 		<= X_24_R_p;
+		X_24_I_r 		<= X_24_I_p;
+		X_25_R_r 		<= X_25_R_p;
+		X_25_I_r 		<= X_25_I_p;
+		X_26_R_r 		<= X_26_R_p;
+		X_26_I_r 		<= X_26_I_p;
+		X_27_R_r 		<= X_27_R_p;
+		X_27_I_r 		<= X_27_I_p;
+		X_28_R_r 		<= X_28_R_p;
+		X_28_I_r 		<= X_28_I_p;		
+		X_29_R_r 		<= X_29_R_p;
+		X_29_I_r 		<= X_29_I_p;
+		X_30_R_r 		<= X_30_R_p;
+		X_30_I_r 		<= X_30_I_p;
+		X_31_R_r 		<= X_31_R_p;
+		X_31_I_r 		<= X_31_I_p;
 
 		x_0_R_r 		<= x_0_R_p;
 		x_0_I_r  		<= x_0_I_p;
@@ -1434,6 +1498,39 @@ always @(posedge clk) begin
 		x_14_I_r 		<= x_14_I_p;
 		x_15_R_r 		<= x_15_R_p;
 		x_15_I_r 		<= x_15_I_p;
+		x_16_R_r 		<= x_16_R_p;
+		x_16_I_r  		<= x_16_I_p;
+		x_17_R_r 		<= x_17_R_p;
+		x_17_I_r 		<= x_17_I_p;
+		x_18_R_r 		<= x_18_R_p;
+		x_18_I_r 		<= x_18_I_p;
+		x_19_R_r 		<= x_19_R_p;
+		x_19_I_r 		<= x_19_I_p;
+		x_20_R_r 		<= x_20_R_p;
+		x_20_I_r 		<= x_20_I_p;
+		x_21_R_r 		<= x_21_R_p;
+		x_21_I_r 		<= x_21_I_p;
+		x_22_R_r 		<= x_22_R_p;
+		x_22_I_r 		<= x_22_I_p;
+		x_23_R_r 		<= x_23_R_p;
+		x_23_I_r 		<= x_23_I_p;
+		x_24_R_r 		<= x_24_R_p;
+		x_24_I_r  		<= x_24_I_p;
+		x_25_R_r 		<= x_25_R_p;
+		x_25_I_r 		<= x_25_I_p;
+		x_26_R_r 		<= x_26_R_p;
+		x_26_I_r 		<= x_26_I_p;
+		x_27_R_r 		<= x_27_R_p;
+		x_27_I_r 		<= x_27_I_p;
+		x_28_R_r 		<= x_28_R_p;
+		x_28_I_r 		<= x_28_I_p;
+		x_29_R_r 		<= x_29_R_p;
+		x_29_I_r 		<= x_29_I_p;
+		x_30_R_r 		<= x_30_R_p;
+		x_30_I_r 		<= x_30_I_p;
+		x_31_R_r 		<= x_31_R_p;
+		x_31_I_r 		<= x_31_I_p;
+
 
 		S1_R0_r			<= S1_R0_p;
 		S1_I0_r	    	<= S1_I0_p;
@@ -1467,6 +1564,38 @@ always @(posedge clk) begin
 		S1_I14_r	    <= S1_I14_p;
 		S1_R15_r		<= S1_R15_p;
 		S1_I15_r	    <= S1_I15_p;
+		S1_R16_r		<= S1_R16_p;
+		S1_I16_r    	<= S1_I16_p;
+		S1_R17_r		<= S1_R17_p;
+		S1_I17_r    	<= S1_I17_p;
+		S1_R18_r		<= S1_R18_p;
+		S1_I18_r    	<= S1_I18_p;
+		S1_R19_r		<= S1_R19_p;
+		S1_I19_r    	<= S1_I19_p;
+		S1_R20_r		<= S1_R20_p;
+		S1_I20_r    	<= S1_I20_p;
+		S1_R21_r		<= S1_R21_p;
+		S1_I21_r    	<= S1_I21_p;
+		S1_R22_r		<= S1_R22_p;
+		S1_I22_r    	<= S1_I22_p;
+		S1_R23_r		<= S1_R23_p;
+		S1_I23_r    	<= S1_I23_p;
+		S1_R24_r		<= S1_R24_p;
+		S1_I24_r    	<= S1_I24_p;
+		S1_R25_r		<= S1_R25_p;
+		S1_I25_r    	<= S1_I25_p;
+		S1_R26_r		<= S1_R26_p;
+		S1_I26_r	    <= S1_I26_p;
+		S1_R27_r		<= S1_R27_p;
+		S1_I27_r	    <= S1_I27_p;
+		S1_R28_r		<= S1_R28_p;
+		S1_I28_r	    <= S1_I28_p;
+		S1_R29_r		<= S1_R29_p;
+		S1_I29_r	    <= S1_I29_p;
+		S1_R30_r		<= S1_R30_p;
+		S1_I30_r	    <= S1_I30_p;
+		S1_R31_r		<= S1_R31_p;
+		S1_I31_r	    <= S1_I31_p;
 
 		S2_R0_r			<= S2_R0_p;
 		S2_I0_r	    	<= S2_I0_p;
@@ -1500,6 +1629,38 @@ always @(posedge clk) begin
 		S2_I14_r	    <= S2_I14_p;
 		S2_R15_r		<= S2_R15_p;
 		S2_I15_r	    <= S2_I15_p;
+		S2_R16_r		<= S2_R16_p;
+		S2_I16_r    	<= S2_I16_p;
+		S2_R17_r		<= S2_R17_p;
+		S2_I17_r    	<= S2_I17_p;
+		S2_R18_r		<= S2_R18_p;
+		S2_I18_r    	<= S2_I18_p;
+		S2_R19_r		<= S2_R19_p;
+		S2_I19_r    	<= S2_I19_p;
+		S2_R20_r		<= S2_R20_p;
+		S2_I20_r    	<= S2_I20_p;
+		S2_R21_r		<= S2_R21_p;
+		S2_I21_r    	<= S2_I21_p;
+		S2_R22_r		<= S2_R22_p;
+		S2_I22_r    	<= S2_I22_p;
+		S2_R23_r		<= S2_R23_p;
+		S2_I23_r    	<= S2_I23_p;
+		S2_R24_r		<= S2_R24_p;
+		S2_I24_r    	<= S2_I24_p;
+		S2_R25_r		<= S2_R25_p;
+		S2_I25_r    	<= S2_I25_p;
+		S2_R26_r		<= S2_R26_p;
+		S2_I26_r	    <= S2_I26_p;
+		S2_R27_r		<= S2_R27_p;
+		S2_I27_r	    <= S2_I27_p;
+		S2_R28_r		<= S2_R28_p;
+		S2_I28_r	    <= S2_I28_p;
+		S2_R29_r		<= S2_R29_p;
+		S2_I29_r	    <= S2_I29_p;
+		S2_R30_r		<= S2_R30_p;
+		S2_I30_r	    <= S2_I30_p;
+		S2_R31_r		<= S2_R31_p;
+		S2_I31_r	    <= S2_I31_p;
 
 		S3_R0_r			<= S3_R0_p;
 		S3_I0_r	    	<= S3_I0_p;
@@ -1533,6 +1694,103 @@ always @(posedge clk) begin
 		S3_I14_r	    <= S3_I14_p;
 		S3_R15_r		<= S3_R15_p;
 		S3_I15_r	    <= S3_I15_p;
+		S3_R16_r		<= S3_R16_p;
+		S3_I16_r    	<= S3_I16_p;
+		S3_R17_r		<= S3_R17_p;
+		S3_I17_r    	<= S3_I17_p;
+		S3_R18_r		<= S3_R18_p;
+		S3_I18_r    	<= S3_I18_p;
+		S3_R19_r		<= S3_R19_p;
+		S3_I19_r    	<= S3_I19_p;
+		S3_R20_r		<= S3_R20_p;
+		S3_I20_r    	<= S3_I20_p;
+		S3_R21_r		<= S3_R21_p;
+		S3_I21_r    	<= S3_I21_p;
+		S3_R22_r		<= S3_R22_p;
+		S3_I22_r    	<= S3_I22_p;
+		S3_R23_r		<= S3_R23_p;
+		S3_I23_r    	<= S3_I23_p;
+		S3_R24_r    	<= S3_R24_p;
+		S3_I24_r	   	<= S3_I24_p;
+		S3_R25_r    	<= S3_R25_p;
+		S3_I25_r	   	<= S3_I25_p;
+		S3_R26_r		<= S3_R26_p;
+		S3_I26_r	    <= S3_I26_p;
+		S3_R27_r		<= S3_R27_p;
+		S3_I27_r	    <= S3_I27_p;
+		S3_R28_r		<= S3_R28_p;
+		S3_I28_r	    <= S3_I28_p;
+		S3_R29_r		<= S3_R29_p;
+		S3_I29_r	    <= S3_I29_p;
+		S3_R30_r		<= S3_R30_p;
+		S3_I30_r	    <= S3_I30_p;
+		S3_R31_r		<= S3_R31_p;
+		S3_I31_r	    <= S3_I31_p;
+
+		S4_R0_r			<= S4_R0_p;
+		S4_I0_r	    	<= S4_I0_p;
+		S4_R1_r			<= S4_R1_p;
+		S4_I1_r	    	<= S4_I1_p;
+		S4_R2_r			<= S4_R2_p;
+		S4_I2_r	    	<= S4_I2_p;
+		S4_R3_r			<= S4_R3_p;
+		S4_I3_r	    	<= S4_I3_p;
+		S4_R4_r			<= S4_R4_p;
+		S4_I4_r	    	<= S4_I4_p;
+		S4_R5_r			<= S4_R5_p;
+		S4_I5_r	    	<= S4_I5_p;
+		S4_R6_r			<= S4_R6_p;
+		S4_I6_r	    	<= S4_I6_p;
+		S4_R7_r			<= S4_R7_p;
+		S4_I7_r	    	<= S4_I7_p;
+		S4_R8_r			<= S4_R8_p;
+		S4_I8_r	    	<= S4_I8_p;
+		S4_R9_r			<= S4_R9_p;
+		S4_I9_r	    	<= S4_I9_p;
+		S4_R10_r		<= S4_R10_p;
+		S4_I10_r	    <= S4_I10_p;
+		S4_R11_r		<= S4_R11_p;
+		S4_I11_r	    <= S4_I11_p;
+		S4_R12_r		<= S4_R12_p;
+		S4_I12_r	    <= S4_I12_p;
+		S4_R13_r		<= S4_R13_p;
+		S4_I13_r	    <= S4_I13_p;
+		S4_R14_r		<= S4_R14_p;
+		S4_I14_r	    <= S4_I14_p;
+		S4_R15_r		<= S4_R15_p;
+		S4_I15_r	    <= S4_I15_p;
+		S4_R16_r		<= S4_R16_p;
+		S4_I16_r    	<= S4_I16_p;
+		S4_R17_r		<= S4_R17_p;
+		S4_I17_r    	<= S4_I17_p;
+		S4_R18_r		<= S4_R18_p;
+		S4_I18_r    	<= S4_I18_p;
+		S4_R19_r		<= S4_R19_p;
+		S4_I19_r    	<= S4_I19_p;
+		S4_R20_r		<= S4_R20_p;
+		S4_I20_r    	<= S4_I20_p;
+		S4_R21_r		<= S4_R21_p;
+		S4_I21_r    	<= S4_I21_p;
+		S4_R22_r		<= S4_R22_p;
+		S4_I22_r    	<= S4_I22_p;
+		S4_R23_r		<= S4_R23_p;
+		S4_I23_r    	<= S4_I23_p;
+		S4_R24_r    	<= S4_R24_p;
+		S4_I24_r	   	<= S4_I24_p;
+		S4_R25_r    	<= S4_R25_p;
+		S4_I25_r	   	<= S4_I25_p;
+		S4_R26_r		<= S4_R26_p;
+		S4_I26_r	    <= S4_I26_p;
+		S4_R27_r		<= S4_R27_p;
+		S4_I27_r	    <= S4_I27_p;
+		S4_R28_r		<= S4_R28_p;
+		S4_I28_r	    <= S4_I28_p;
+		S4_R29_r		<= S4_R29_p;
+		S4_I29_r	    <= S4_I29_p;
+		S4_R30_r		<= S4_R30_p;
+		S4_I30_r	    <= S4_I30_p;
+		S4_R31_r		<= S4_R31_p;
+		S4_I31_r	    <= S4_I31_p;
 
 
 
@@ -1564,7 +1822,31 @@ always @(posedge clk) begin
 		T_R10_r  		<= T_R10_p;
 		T_I10_r  		<= T_I10_p;
 		T_R11_r  		<= T_R11_p;
-		T_I11_r  		<= T_I11_p;		
+		T_I11_r  		<= T_I11_p;
+		T_R12_r  		<= T_R12_p;
+		T_I12_r  		<= T_I12_p;
+		T_R13_r  		<= T_R13_p;
+		T_I13_r  		<= T_I13_p;
+		T_R14_r  		<= T_R14_p;
+		T_I14_r  		<= T_I14_p;
+		T_R15_r  		<= T_R15_p;
+		T_I15_r  		<= T_I15_p;
+		T_R16_r  		<= T_R16_p;
+		T_I16_r  		<= T_I16_p;
+		T_R17_r  		<= T_R17_p;
+		T_I17_r  		<= T_I17_p;
+		T_R18_r  		<= T_R18_p;
+		T_I18_r  		<= T_I18_p;
+		T_R19_r  		<= T_R19_p;
+		T_I19_r  		<= T_I19_p;
+		T_R20_r  		<= T_R20_p;
+		T_I20_r  		<= T_I20_p;
+		T_R21_r  		<= T_R21_p;
+		T_I21_r  		<= T_I21_p;
+		T_R22_r  		<= T_R22_p;
+		T_I22_r  		<= T_I22_p;
+		T_R23_r  		<= T_R23_p;
+		T_I23_r  		<= T_I23_p;			
 		
 		
 	end
@@ -1607,7 +1889,39 @@ always @(*) begin
 	x_14_R_p 	= x_14_R_r;
 	x_14_I_p 	= x_14_I_r;
 	x_15_R_p 	= x_15_R_r;
-	x_15_I_p 	= x_15_I_r;	
+	x_15_I_p 	= x_15_I_r;
+	x_16_R_p 	= x_16_R_r;
+	x_16_I_p 	= x_16_I_r;
+	x_17_R_p 	= x_17_R_r;
+	x_17_I_p 	= x_17_I_r;
+	x_18_R_p 	= x_18_R_r;
+	x_18_I_p 	= x_18_I_r;
+	x_19_R_p 	= x_19_R_r;
+	x_19_I_p 	= x_19_I_r;
+	x_20_R_p 	= x_20_R_r;
+	x_20_I_p 	= x_20_I_r;
+	x_21_R_p 	= x_21_R_r;
+	x_21_I_p 	= x_21_I_r;
+	x_22_R_p 	= x_22_R_r;
+	x_22_I_p 	= x_22_I_r;
+	x_23_R_p 	= x_23_R_r;
+	x_23_I_p 	= x_23_I_r;
+	x_24_R_p 	= x_24_R_r;
+	x_24_I_p 	= x_24_I_r;
+	x_25_R_p 	= x_25_R_r;
+	x_25_I_p 	= x_25_I_r;
+	x_26_R_p 	= x_26_R_r;
+	x_26_I_p 	= x_26_I_r;
+	x_27_R_p 	= x_27_R_r;
+	x_27_I_p 	= x_27_I_r;
+	x_28_R_p 	= x_28_R_r;
+	x_28_I_p 	= x_28_I_r;
+	x_29_R_p 	= x_29_R_r;
+	x_29_I_p 	= x_29_I_r;
+	x_30_R_p 	= x_30_R_r;
+	x_30_I_p 	= x_30_I_r;
+	x_31_R_p 	= x_31_R_r;
+	x_31_I_p 	= x_31_I_r;		
 
 	S1_R0_p		= S1_R0_r;
 	S1_I0_p	    = S1_I0_r;
@@ -1641,6 +1955,38 @@ always @(*) begin
 	S1_I14_p	= S1_I14_r;
 	S1_R15_p	= S1_R15_r;
 	S1_I15_p	= S1_I15_r;
+	S1_R16_p	= S1_R16_r;
+	S1_I16_p    = S1_I16_r;
+	S1_R17_p	= S1_R17_r;
+	S1_I17_p    = S1_I17_r;
+	S1_R18_p	= S1_R18_r;
+	S1_I18_p    = S1_I18_r;
+	S1_R19_p	= S1_R19_r;
+	S1_I19_p    = S1_I19_r;
+	S1_R20_p	= S1_R20_r;
+	S1_I20_p    = S1_I20_r;
+	S1_R21_p	= S1_R21_r;
+	S1_I21_p    = S1_I21_r;
+	S1_R22_p	= S1_R22_r;
+	S1_I22_p    = S1_I22_r;
+	S1_R23_p	= S1_R23_r;
+	S1_I23_p    = S1_I23_r;
+	S1_R24_p	= S1_R24_r;
+	S1_I24_p    = S1_I24_r;
+	S1_R25_p	= S1_R25_r;
+	S1_I25_p    = S1_I25_r;
+	S1_R26_p	= S1_R26_r;
+	S1_I26_p	= S1_I26_r;
+	S1_R27_p	= S1_R27_r;
+	S1_I27_p	= S1_I27_r;
+	S1_R28_p	= S1_R28_r;
+	S1_I28_p	= S1_I28_r;
+	S1_R29_p	= S1_R29_r;
+	S1_I29_p	= S1_I29_r;
+	S1_R30_p	= S1_R30_r;
+	S1_I30_p	= S1_I30_r;
+	S1_R31_p	= S1_R31_r;
+	S1_I31_p	= S1_I31_r;
 
 	S2_R0_p		= S2_R0_r;
 	S2_I0_p	    = S2_I0_r;
@@ -1674,6 +2020,38 @@ always @(*) begin
 	S2_I14_p	= S2_I14_r;
 	S2_R15_p	= S2_R15_r;
 	S2_I15_p	= S2_I15_r;
+	S2_R16_p	= S2_R16_r;
+	S2_I16_p	= S2_I16_r;
+	S2_R17_p	= S2_R17_r;
+	S2_I17_p	= S2_I17_r;
+	S2_R18_p	= S2_R18_r;
+	S2_I18_p	= S2_I18_r;
+	S2_R19_p	= S2_R19_r;
+	S2_I19_p	= S2_I19_r;
+	S2_R20_p	= S2_R20_r;
+	S2_I20_p	= S2_I20_r;
+	S2_R21_p	= S2_R21_r;
+	S2_I21_p	= S2_I21_r;
+	S2_R22_p	= S2_R22_r;
+	S2_I22_p	= S2_I22_r;
+	S2_R23_p	= S2_R23_r;
+	S2_I23_p	= S2_I23_r;
+	S2_R24_p	= S2_R24_r;
+	S2_I24_p	= S2_I24_r;
+	S2_R25_p	= S2_R25_r;
+	S2_I25_p	= S2_I25_r;
+	S2_R26_p	= S2_R26_r;
+	S2_I26_p	= S2_I26_r;
+	S2_R27_p	= S2_R27_r;
+	S2_I27_p	= S2_I27_r;
+	S2_R28_p	= S2_R28_r;
+	S2_I28_p	= S2_I28_r;
+	S2_R29_p	= S2_R29_r;
+	S2_I29_p	= S2_I29_r;
+	S2_R30_p	= S2_R30_r;
+	S2_I30_p	= S2_I30_r;
+	S2_R31_p	= S2_R31_r;
+	S2_I31_p	= S2_I31_r;
 
 	S3_R0_p		= S3_R0_r;
 	S3_I0_p	    = S3_I0_r;
@@ -1707,7 +2085,103 @@ always @(*) begin
 	S3_I14_p	= S3_I14_r;
 	S3_R15_p	= S3_R15_r;
 	S3_I15_p	= S3_I15_r;
+	S3_R16_p	= S3_R16_r;
+	S3_I16_p	= S3_I16_r;
+	S3_R17_p	= S3_R17_r;
+	S3_I17_p	= S3_I17_r;
+	S3_R18_p	= S3_R18_r;
+	S3_I18_p	= S3_I18_r;
+	S3_R19_p	= S3_R19_r;
+	S3_I19_p	= S3_I19_r;
+	S3_R20_p	= S3_R20_r;
+	S3_I20_p	= S3_I20_r;
+	S3_R21_p	= S3_R21_r;
+	S3_I21_p	= S3_I21_r;
+	S3_R22_p	= S3_R22_r;
+	S3_I22_p	= S3_I22_r;
+	S3_R23_p	= S3_R23_r;
+	S3_I23_p	= S3_I23_r;
+	S3_R24_p	= S3_R24_r;
+	S3_I24_p	= S3_I24_r;
+	S3_R25_p	= S3_R25_r;
+	S3_I25_p	= S3_I25_r;
+	S3_R26_p	= S3_R26_r;
+	S3_I26_p	= S3_I26_r;
+	S3_R27_p	= S3_R27_r;
+	S3_I27_p	= S3_I27_r;
+	S3_R28_p	= S3_R28_r;
+	S3_I28_p	= S3_I28_r;
+	S3_R29_p	= S3_R29_r;
+	S3_I29_p	= S3_I29_r;
+	S3_R30_p	= S3_R30_r;
+	S3_I30_p	= S3_I30_r;
+	S3_R31_p	= S3_R31_r;
+	S3_I31_p	= S3_I31_r;
 
+	S4_R0_p		= S4_R0_r;
+	S4_I0_p	    = S4_I0_r;
+	S4_R1_p		= S4_R1_r;
+	S4_I1_p	    = S4_I1_r;
+	S4_R2_p		= S4_R2_r;
+	S4_I2_p	    = S4_I2_r;
+	S4_R3_p		= S4_R3_r;
+	S4_I3_p	    = S4_I3_r;
+	S4_R4_p		= S4_R4_r;
+	S4_I4_p	    = S4_I4_r;
+	S4_R5_p		= S4_R5_r;
+	S4_I5_p	    = S4_I5_r;
+	S4_R6_p		= S4_R6_r;
+	S4_I6_p	    = S4_I6_r;
+	S4_R7_p		= S4_R7_r;
+	S4_I7_p	    = S4_I7_r;
+	S4_R8_p		= S4_R8_r;
+	S4_I8_p	    = S4_I8_r;
+	S4_R9_p		= S4_R9_r;
+	S4_I9_p	    = S4_I9_r;
+	S4_R10_p	= S4_R10_r;
+	S4_I10_p	= S4_I10_r;
+	S4_R11_p	= S4_R11_r;
+	S4_I11_p	= S4_I11_r;
+	S4_R12_p	= S4_R12_r;
+	S4_I12_p	= S4_I12_r;
+	S4_R13_p	= S4_R13_r;
+	S4_I13_p	= S4_I13_r;
+	S4_R14_p	= S4_R14_r;
+	S4_I14_p	= S4_I14_r;
+	S4_R15_p	= S4_R15_r;
+	S4_I15_p	= S4_I15_r;
+	S4_R16_p	= S4_R16_r;
+	S4_I16_p	= S4_I16_r;
+	S4_R17_p	= S4_R17_r;
+	S4_I17_p	= S4_I17_r;
+	S4_R18_p	= S4_R18_r;
+	S4_I18_p	= S4_I18_r;
+	S4_R19_p	= S4_R19_r;
+	S4_I19_p	= S4_I19_r;
+	S4_R20_p	= S4_R20_r;
+	S4_I20_p	= S4_I20_r;
+	S4_R21_p	= S4_R21_r;
+	S4_I21_p	= S4_I21_r;
+	S4_R22_p	= S4_R22_r;
+	S4_I22_p	= S4_I22_r;
+	S4_R23_p	= S4_R23_r;
+	S4_I23_p	= S4_I23_r;
+	S4_R24_p	= S4_R24_r;
+	S4_I24_p	= S4_I24_r;
+	S4_R25_p	= S4_R25_r;
+	S4_I25_p	= S4_I25_r;
+	S4_R26_p	= S4_R26_r;
+	S4_I26_p	= S4_I26_r;
+	S4_R27_p	= S4_R27_r;
+	S4_I27_p	= S4_I27_r;
+	S4_R28_p	= S4_R28_r;
+	S4_I28_p	= S4_I28_r;
+	S4_R29_p	= S4_R29_r;
+	S4_I29_p	= S4_I29_r;
+	S4_R30_p	= S4_R30_r;
+	S4_I30_p	= S4_I30_r;
+	S4_R31_p	= S4_R31_r;
+	S4_I31_p	= S4_I31_r;
 
 	X_0_R_p     = X_0_R_r;
 	X_0_I_p  	= X_0_I_r;
@@ -1741,6 +2215,38 @@ always @(*) begin
 	X_14_I_p  	= X_14_I_r;
 	X_15_R_p    = X_15_R_r;
 	X_15_I_p  	= X_15_I_r;
+	X_16_R_p     = X_16_R_r;
+	X_16_I_p  	= X_16_I_r;
+	X_17_R_p     = X_17_R_r;
+	X_17_I_p  	= X_17_I_r;
+	X_18_R_p     = X_18_R_r;
+	X_18_I_p  	= X_18_I_r;
+	X_19_R_p     = X_19_R_r;
+	X_19_I_p  	= X_19_I_r;
+	X_20_R_p     = X_20_R_r;
+	X_20_I_p  	= X_20_I_r;
+	X_21_R_p     = X_21_R_r;
+	X_21_I_p  	= X_21_I_r;
+	X_22_R_p     = X_22_R_r;
+	X_22_I_p  	= X_22_I_r;
+	X_23_R_p     = X_23_R_r;
+	X_23_I_p  	= X_23_I_r;
+	X_24_R_p     = X_24_R_r;
+	X_24_I_p  	= X_24_I_r;
+	X_25_R_p     = X_25_R_r;
+	X_25_I_p  	= X_25_I_r;
+	X_26_R_p    = X_26_R_r;
+	X_26_I_p  	= X_26_I_r;
+	X_27_R_p    = X_27_R_r;
+	X_27_I_p  	= X_27_I_r;
+	X_28_R_p    = X_28_R_r;
+	X_28_I_p  	= X_28_I_r;
+	X_29_R_p    = X_29_R_r;
+	X_29_I_p  	= X_29_I_r;
+	X_30_R_p    = X_30_R_r;
+	X_30_I_p  	= X_30_I_r;
+	X_31_R_p    = X_31_R_r;
+	X_31_I_p  	= X_31_I_r;
 
 
 
@@ -1768,6 +2274,30 @@ always @(*) begin
 	T_I10_p  	= T_I10_r;
 	T_R11_p  	= T_R11_r;
 	T_I11_p  	= T_I11_r;
+	T_R12_p  	= T_R12_r;
+	T_I12_p  	= T_I12_r;
+	T_R13_p  	= T_R13_r;
+	T_I13_p  	= T_I13_r;
+	T_R14_p  	= T_R14_r;
+	T_I14_p  	= T_I14_r;
+	T_R15_p  	= T_R15_r;
+	T_I15_p  	= T_I15_r;
+	T_R16_p  	= T_R16_r;
+	T_I16_p  	= T_I16_r;
+	T_R17_p  	= T_R17_r;
+	T_I17_p  	= T_I17_r;
+	T_R18_p  	= T_R18_r;
+	T_I18_p  	= T_I18_r;
+	T_R19_p  	= T_R19_r;
+	T_I19_p  	= T_I19_r;
+	T_R20_p  	= T_R20_r;
+	T_I20_p  	= T_I20_r;
+	T_R21_p  	= T_R21_r;
+	T_I21_p  	= T_I21_r;
+	T_R22_p  	= T_R22_r;
+	T_I22_p  	= T_I22_r;
+	T_R23_p  	= T_R23_r;
+	T_I23_p  	= T_I23_r;
 
 
 
@@ -1805,6 +2335,39 @@ always @(*) begin
 		x_14_I_p   	= x14_I;
 		x_15_R_p   	= x15_R;
 		x_15_I_p   	= x15_I;
+		x_16_R_p   	= x16_R;
+		x_16_I_p   	= x16_I;
+		x_17_R_p   	= x17_R;
+		x_17_I_p   	= x17_I;
+		x_18_R_p   	= x18_R;
+		x_18_I_p   	= x18_I;
+		x_19_R_p   	= x19_R;
+		x_19_I_p   	= x19_I;
+		x_20_R_p   	= x20_R;
+		x_20_I_p   	= x20_I;
+		x_21_R_p   	= x21_R;
+		x_21_I_p   	= x21_I;
+		x_22_R_p   	= x22_R;
+		x_22_I_p   	= x22_I;
+		x_23_R_p   	= x23_R;
+		x_23_I_p   	= x23_I;
+		x_24_R_p   	= x24_R;
+		x_24_I_p   	= x24_I;
+		x_25_R_p   	= x25_R;
+		x_25_I_p   	= x25_I;
+		x_26_R_p   	= x26_R;
+		x_26_I_p   	= x26_I;
+		x_27_R_p   	= x27_R;
+		x_27_I_p   	= x27_I;
+		x_28_R_p   	= x28_R;
+		x_28_I_p   	= x28_I;
+		x_29_R_p   	= x29_R;
+		x_29_I_p   	= x29_I;
+		x_30_R_p   	= x30_R;
+		x_30_I_p   	= x30_I;
+		x_31_R_p   	= x31_R;
+		x_31_I_p   	= x31_I;
+
 
 	end
 
@@ -1812,300 +2375,589 @@ always @(*) begin
 	/* Write Back Logic */
 
 	// Stage 1 
-	if(wr_enable_i[`WBF_16_S1_R0]) begin
+	if(wr_enable_i[`WBF_32_S1_R0]) begin
 		S1_R0_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S1_I0]) begin
+	if(wr_enable_i[`WBF_32_S1_I0]) begin
 		S1_I0_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S1_R1]) begin
+	if(wr_enable_i[`WBF_32_S1_R1]) begin
 		S1_R1_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S1_I1]) begin
+	if(wr_enable_i[`WBF_32_S1_I1]) begin
 		S1_I1_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S1_R2]) begin
+	if(wr_enable_i[`WBF_32_S1_R2]) begin
 		S1_R2_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S1_I2]) begin
+	if(wr_enable_i[`WBF_32_S1_I2]) begin
 		S1_I2_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S1_R3]) begin
+	if(wr_enable_i[`WBF_32_S1_R3]) begin
 		S1_R3_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S1_I3]) begin
+	if(wr_enable_i[`WBF_32_S1_I3]) begin
 		S1_I3_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S1_R4]) begin
+	if(wr_enable_i[`WBF_32_S1_R4]) begin
 		S1_R4_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S1_I4]) begin
+	if(wr_enable_i[`WBF_32_S1_I4]) begin
 		S1_I4_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S1_R5]) begin
+	if(wr_enable_i[`WBF_32_S1_R5]) begin
 		S1_R5_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S1_I5]) begin
+	if(wr_enable_i[`WBF_32_S1_I5]) begin
 		S1_I5_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S1_R6]) begin
+	if(wr_enable_i[`WBF_32_S1_R6]) begin
 		S1_R6_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S1_I6]) begin
+	if(wr_enable_i[`WBF_32_S1_I6]) begin
 		S1_I6_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S1_R7]) begin
+	if(wr_enable_i[`WBF_32_S1_R7]) begin
 		S1_R7_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S1_I7]) begin
+	if(wr_enable_i[`WBF_32_S1_I7]) begin
 		S1_I7_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S1_R8]) begin
+	if(wr_enable_i[`WBF_32_S1_R8]) begin
 		S1_R8_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S1_I8]) begin
+	if(wr_enable_i[`WBF_32_S1_I8]) begin
 		S1_I8_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S1_R9]) begin
+	if(wr_enable_i[`WBF_32_S1_R9]) begin
 		S1_R9_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S1_I9]) begin
+	if(wr_enable_i[`WBF_32_S1_I9]) begin
 		S1_I9_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S1_R10]) begin
+	if(wr_enable_i[`WBF_32_S1_R10]) begin
 		S1_R10_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S1_I10]) begin
+	if(wr_enable_i[`WBF_32_S1_I10]) begin
 		S1_I10_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S1_R11]) begin
+	if(wr_enable_i[`WBF_32_S1_R11]) begin
 		S1_R11_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S1_I11]) begin
+	if(wr_enable_i[`WBF_32_S1_I11]) begin
 		S1_I11_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S1_R12]) begin
+	if(wr_enable_i[`WBF_32_S1_R12]) begin
 		S1_R12_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S1_I12]) begin
+	if(wr_enable_i[`WBF_32_S1_I12]) begin
 		S1_I12_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S1_R13]) begin
+	if(wr_enable_i[`WBF_32_S1_R13]) begin
 		S1_R13_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S1_I13]) begin
+	if(wr_enable_i[`WBF_32_S1_I13]) begin
 		S1_I13_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S1_R14]) begin
+	if(wr_enable_i[`WBF_32_S1_R14]) begin
 		S1_R14_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S1_I14]) begin
+	if(wr_enable_i[`WBF_32_S1_I14]) begin
 		S1_I14_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S1_R15]) begin
+	if(wr_enable_i[`WBF_32_S1_R15]) begin
 		S1_R15_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S1_I15]) begin
+	if(wr_enable_i[`WBF_32_S1_I15]) begin
 		S1_I15_p 		         = wbb;
 	end
+	if(wr_enable_i[`WBF_32_S1_R16]) begin
+		S1_R16_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S1_I16]) begin
+		S1_I16_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S1_R17]) begin
+		S1_R17_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S1_I17]) begin
+		S1_I17_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S1_R18]) begin
+		S1_R18_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S1_I18]) begin
+		S1_I18_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S1_R19]) begin
+		S1_R19_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S1_I19]) begin
+		S1_I19_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S1_R20]) begin
+		S1_R20_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S1_I20]) begin
+		S1_I20_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S1_R21]) begin
+		S1_R21_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S1_I21]) begin
+		S1_I21_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S1_R22]) begin
+		S1_R22_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S1_I22]) begin
+		S1_I22_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S1_R23]) begin
+		S1_R23_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S1_I23]) begin
+		S1_I23_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S1_R24]) begin
+		S1_R24_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S1_I24]) begin
+		S1_I24_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S1_R25]) begin
+		S1_R25_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S1_I25]) begin
+		S1_I25_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S1_R26]) begin
+		S1_R26_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S1_I26]) begin
+		S1_I26_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S1_R27]) begin
+		S1_R27_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S1_I27]) begin
+		S1_I27_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S1_R28]) begin
+		S1_R28_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S1_I28]) begin
+		S1_I28_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S1_R29]) begin
+		S1_R29_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S1_I29]) begin
+		S1_I29_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S1_R30]) begin
+		S1_R30_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S1_I30]) begin
+		S1_I30_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S1_R31]) begin
+		S1_R31_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S1_I31]) begin
+		S1_I31_p 		         = wbb;
+	end
+
 
 
 	
 	// Stage 2 
-	if(wr_enable_i[`WBF_16_S2_R0]) begin
+	if(wr_enable_i[`WBF_32_S2_R0]) begin
 		S2_R0_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S2_I0]) begin
+	if(wr_enable_i[`WBF_32_S2_I0]) begin
 		S2_I0_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S2_R1]) begin
+	if(wr_enable_i[`WBF_32_S2_R1]) begin
 		S2_R1_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S2_I1]) begin
+	if(wr_enable_i[`WBF_32_S2_I1]) begin
 		S2_I1_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S2_R2]) begin
+	if(wr_enable_i[`WBF_32_S2_R2]) begin
 		S2_R2_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S2_I2]) begin
+	if(wr_enable_i[`WBF_32_S2_I2]) begin
 		S2_I2_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S2_R3]) begin
+	if(wr_enable_i[`WBF_32_S2_R3]) begin
 		S2_R3_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S2_I3]) begin
+	if(wr_enable_i[`WBF_32_S2_I3]) begin
 		S2_I3_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S2_R4]) begin
+	if(wr_enable_i[`WBF_32_S2_R4]) begin
 		S2_R4_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S2_I4]) begin
+	if(wr_enable_i[`WBF_32_S2_I4]) begin
 		S2_I4_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S2_R5]) begin
+	if(wr_enable_i[`WBF_32_S2_R5]) begin
 		S2_R5_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S2_I5]) begin
+	if(wr_enable_i[`WBF_32_S2_I5]) begin
 		S2_I5_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S2_R6]) begin
+	if(wr_enable_i[`WBF_32_S2_R6]) begin
 		S2_R6_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S2_I6]) begin
+	if(wr_enable_i[`WBF_32_S2_I6]) begin
 		S2_I6_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S2_R7]) begin
+	if(wr_enable_i[`WBF_32_S2_R7]) begin
 		S2_R7_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S2_I7]) begin
+	if(wr_enable_i[`WBF_32_S2_I7]) begin
 		S2_I7_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S2_R8]) begin
+	if(wr_enable_i[`WBF_32_S2_R8]) begin
 		S2_R8_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S2_I8]) begin
+	if(wr_enable_i[`WBF_32_S2_I8]) begin
 		S2_I8_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S2_R9]) begin
+	if(wr_enable_i[`WBF_32_S2_R9]) begin
 		S2_R9_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S2_I9]) begin
+	if(wr_enable_i[`WBF_32_S2_I9]) begin
 		S2_I9_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S2_R10]) begin
+	if(wr_enable_i[`WBF_32_S2_R10]) begin
 		S2_R10_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S2_I10]) begin
+	if(wr_enable_i[`WBF_32_S2_I10]) begin
 		S2_I10_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S2_R11]) begin
+	if(wr_enable_i[`WBF_32_S2_R11]) begin
 		S2_R11_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S2_I11]) begin
+	if(wr_enable_i[`WBF_32_S2_I11]) begin
 		S2_I11_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S2_R12]) begin
+	if(wr_enable_i[`WBF_32_S2_R12]) begin
 		S2_R12_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S2_I12]) begin
+	if(wr_enable_i[`WBF_32_S2_I12]) begin
 		S2_I12_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S2_R13]) begin
+	if(wr_enable_i[`WBF_32_S2_R13]) begin
 		S2_R13_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S2_I13]) begin
+	if(wr_enable_i[`WBF_32_S2_I13]) begin
 		S2_I13_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S2_R14]) begin
+	if(wr_enable_i[`WBF_32_S2_R14]) begin
 		S2_R14_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S2_I14]) begin
+	if(wr_enable_i[`WBF_32_S2_I14]) begin
 		S2_I14_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S2_R15]) begin
+	if(wr_enable_i[`WBF_32_S2_R15]) begin
 		S2_R15_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S2_I15]) begin
+	if(wr_enable_i[`WBF_32_S2_I15]) begin
 		S2_I15_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S2_R16]) begin
+		S2_R16_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S2_I16]) begin
+		S2_I16_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S2_R17]) begin
+		S2_R17_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S2_I17]) begin
+		S2_I17_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S2_R18]) begin
+		S2_R18_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S2_I18]) begin
+		S2_I18_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S2_R19]) begin
+		S2_R19_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S2_I19]) begin
+		S2_I19_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S2_R20]) begin
+		S2_R20_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S2_I20]) begin
+		S2_I20_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S2_R21]) begin
+		S2_R21_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S2_I21]) begin
+		S2_I21_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S2_R22]) begin
+		S2_R22_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S2_I22]) begin
+		S2_I22_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S2_R23]) begin
+		S2_R23_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S2_I23]) begin
+		S2_I23_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S2_R24]) begin
+		S2_R24_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S2_I24]) begin
+		S2_I24_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S2_R25]) begin
+		S2_R25_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S2_I25]) begin
+		S2_I25_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S2_R26]) begin
+		S2_R26_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S2_I26]) begin
+		S2_I26_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S2_R27]) begin
+		S2_R27_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S2_I27]) begin
+		S2_I27_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S2_R28]) begin
+		S2_R28_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S2_I28]) begin
+		S2_I28_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S2_R29]) begin
+		S2_R29_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S2_I29]) begin
+		S2_I29_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S2_R30]) begin
+		S2_R30_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S2_I30]) begin
+		S2_I30_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S2_R31]) begin
+		S2_R31_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S2_I31]) begin
+		S2_I31_p 		         = wbb;
 	end
 
 
 	// Stage 3
-	if(wr_enable_i[`WBF_16_S3_R0]) begin
+	if(wr_enable_i[`WBF_32_S3_R0]) begin
 		S3_R0_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S3_I0]) begin
+	if(wr_enable_i[`WBF_32_S3_I0]) begin
 		S3_I0_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S3_R1]) begin
+	if(wr_enable_i[`WBF_32_S3_R1]) begin
 		S3_R1_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S3_I1]) begin
+	if(wr_enable_i[`WBF_32_S3_I1]) begin
 		S3_I1_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S3_R2]) begin
+	if(wr_enable_i[`WBF_32_S3_R2]) begin
 		S3_R2_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S3_I2]) begin
+	if(wr_enable_i[`WBF_32_S3_I2]) begin
 		S3_I2_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S3_R3]) begin
+	if(wr_enable_i[`WBF_32_S3_R3]) begin
 		S3_R3_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S3_I3]) begin
+	if(wr_enable_i[`WBF_32_S3_I3]) begin
 		S3_I3_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S3_R4]) begin
+	if(wr_enable_i[`WBF_32_S3_R4]) begin
 		S3_R4_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S3_I4]) begin
+	if(wr_enable_i[`WBF_32_S3_I4]) begin
 		S3_I4_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S3_R5]) begin
+	if(wr_enable_i[`WBF_32_S3_R5]) begin
 		S3_R5_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S3_I5]) begin
+	if(wr_enable_i[`WBF_32_S3_I5]) begin
 		S3_I5_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S3_R6]) begin
+	if(wr_enable_i[`WBF_32_S3_R6]) begin
 		S3_R6_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S3_I6]) begin
+	if(wr_enable_i[`WBF_32_S3_I6]) begin
 		S3_I6_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S3_R7]) begin
+	if(wr_enable_i[`WBF_32_S3_R7]) begin
 		S3_R7_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S3_I7]) begin
+	if(wr_enable_i[`WBF_32_S3_I7]) begin
 		S3_I7_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S3_R8]) begin
+	if(wr_enable_i[`WBF_32_S3_R8]) begin
 		S3_R8_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S3_I8]) begin
+	if(wr_enable_i[`WBF_32_S3_I8]) begin
 		S3_I8_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S3_R9]) begin
+	if(wr_enable_i[`WBF_32_S3_R9]) begin
 		S3_R9_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S3_I9]) begin
+	if(wr_enable_i[`WBF_32_S3_I9]) begin
 		S3_I9_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S3_R10]) begin
+	if(wr_enable_i[`WBF_32_S3_R10]) begin
 		S3_R10_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S3_I10]) begin
+	if(wr_enable_i[`WBF_32_S3_I10]) begin
 		S3_I10_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S3_R11]) begin
+	if(wr_enable_i[`WBF_32_S3_R11]) begin
 		S3_R11_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S3_I11]) begin
+	if(wr_enable_i[`WBF_32_S3_I11]) begin
 		S3_I11_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S3_R12]) begin
+	if(wr_enable_i[`WBF_32_S3_R12]) begin
 		S3_R12_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S3_I12]) begin
+	if(wr_enable_i[`WBF_32_S3_I12]) begin
 		S3_I12_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S3_R13]) begin
+	if(wr_enable_i[`WBF_32_S3_R13]) begin
 		S3_R13_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S3_I13]) begin
+	if(wr_enable_i[`WBF_32_S3_I13]) begin
 		S3_I13_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S3_R14]) begin
+	if(wr_enable_i[`WBF_32_S3_R14]) begin
 		S3_R14_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S3_I14]) begin
+	if(wr_enable_i[`WBF_32_S3_I14]) begin
 		S3_I14_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S3_R15]) begin
+	if(wr_enable_i[`WBF_32_S3_R15]) begin
 		S3_R15_p 		         = wbb;
 	end
-	if(wr_enable_i[`WBF_16_S3_I15]) begin
+	if(wr_enable_i[`WBF_32_S3_I15]) begin
 		S3_I15_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S3_R16]) begin
+		S3_R16_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S3_I16]) begin
+		S3_I16_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S3_R17]) begin
+		S3_R17_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S3_I17]) begin
+		S3_I17_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S3_R18]) begin
+		S3_R18_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S3_I18]) begin
+		S3_I18_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S3_R19]) begin
+		S3_R19_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S3_I19]) begin
+		S3_I19_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S3_R20]) begin
+		S3_R20_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S3_I20]) begin
+		S3_I20_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S3_R21]) begin
+		S3_R21_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S3_I21]) begin
+		S3_I21_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S3_R22]) begin
+		S3_R22_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S3_I22]) begin
+		S3_I22_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S3_R23]) begin
+		S3_R23_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S3_I23]) begin
+		S3_I23_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S3_R24]) begin
+		S3_R24_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S3_I24]) begin
+		S3_I24_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S3_R25]) begin
+		S3_R25_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S3_I25]) begin
+		S3_I25_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S3_R26]) begin
+		S3_R26_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S3_I26]) begin
+		S3_I26_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S3_R27]) begin
+		S3_R27_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S3_I27]) begin
+		S3_I27_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S3_R28]) begin
+		S3_R28_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S3_I28]) begin
+		S3_I28_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S3_R29]) begin
+		S3_R29_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S3_I29]) begin
+		S3_I29_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S3_R30]) begin
+		S3_R30_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S3_I30]) begin
+		S3_I30_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S3_R31]) begin
+		S3_R31_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_32_S3_I31]) begin
+		S3_I31_p 		         = wbb;
 	end
 	if(wr_enable_i[`WBF_16_T_R0]) begin
 		T_R0_p 		         	= wbb[23:8];
