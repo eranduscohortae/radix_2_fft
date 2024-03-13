@@ -39,9 +39,9 @@ module fft16_datapath(
 							input [15:0] x_15_R_i,
 							input [15:0] x_15_I_i,							
 
-							input [150:0] alu_reg_i,
+							input [175:0] alu_reg_i,
 							input [4:0] alu_mode_i,
-							input [127:0] wr_enable_i,
+							input [165:0] wr_enable_i,
 
 							output [15:0] X_0_R_o,
 							output [15:0] X_0_I_o,
@@ -198,7 +198,13 @@ reg [15:0] x0_R , x0_I,
  		   	 T_R8_r , T_I8_r , T_R8_p , T_I8_p,
  		  	 T_R9_r , T_I9_r , T_R9_p , T_I9_p,
  		   	 T_R10_r, T_I10_r, T_R10_p, T_I10_p,	
- 		   	 T_R11_r, T_I11_r, T_R11_p, T_I11_p;
+ 		   	 T_R11_r, T_I11_r, T_R11_p, T_I11_p,
+ 		   	 T_R12_r, T_I12_r, T_R12_p, T_I12_p,
+ 		   	 T_R13_r, T_I13_r, T_R13_p, T_I13_p,	
+ 		   	 T_R14_r, T_I14_r, T_R14_p, T_I14_p,
+ 		   	 T_R15_r, T_I15_r, T_R15_p, T_I15_p,
+ 		   	 T_R16_r, T_I16_r, T_R16_p, T_I16_p,	
+ 		   	 T_R17_r, T_I17_r, T_R17_p, T_I17_p;
 
 
 /* Alu operands  */
@@ -607,7 +613,30 @@ always @(posedge clk) begin
 		T_I11_r  		<= 16'd0;
 		T_R11_p 		<= 16'd0;
 		T_I11_p  		<= 16'd0;
-
+		T_R12_r  		<= 16'd0;
+		T_I12_r  		<= 16'd0;
+		T_R12_p 		<= 16'd0;
+		T_I12_p  		<= 16'd0;
+		T_R13_r  		<= 16'd0;
+		T_I13_r  		<= 16'd0;
+		T_R13_p 		<= 16'd0;
+		T_I13_p  		<= 16'd0;
+		T_R14_r  		<= 16'd0;
+		T_I14_r  		<= 16'd0;
+		T_R14_p 		<= 16'd0;
+		T_I14_p  		<= 16'd0;
+		T_R15_r  		<= 16'd0;
+		T_I15_r  		<= 16'd0;
+		T_R15_p 		<= 16'd0;
+		T_I15_p  		<= 16'd0;
+		T_R16_r  		<= 16'd0;
+		T_I16_r  		<= 16'd0;
+		T_R16_p 		<= 16'd0;
+		T_I16_p  		<= 16'd0;
+		T_R17_r  		<= 16'd0;
+		T_I17_r  		<= 16'd0;
+		T_R17_p 		<= 16'd0;
+		T_I17_p  		<= 16'd0;
 
 		start_r			<= 0;
 
@@ -849,7 +878,19 @@ always @(posedge clk) begin
 		T_R10_r  		<= T_R10_p;
 		T_I10_r  		<= T_I10_p;
 		T_R11_r  		<= T_R11_p;
-		T_I11_r  		<= T_I11_p;		
+		T_I11_r  		<= T_I11_p;	
+		T_R12_r  		<= T_R12_p;
+		T_I12_r  		<= T_I12_p;
+		T_R13_r  		<= T_R13_p;
+		T_I13_r  		<= T_I13_p;
+		T_R14_r  		<= T_R14_p;
+		T_I14_r  		<= T_I14_p;
+		T_R15_r  		<= T_R15_p;
+		T_I15_r  		<= T_I15_p;	
+		T_R16_r  		<= T_R16_p;
+		T_I16_r  		<= T_I16_p;
+		T_R17_r  		<= T_R17_p;
+		T_I17_r  		<= T_I17_p;		
 		
 		
 	end
@@ -1053,6 +1094,18 @@ always @(*) begin
 	T_I10_p  	= T_I10_r;
 	T_R11_p  	= T_R11_r;
 	T_I11_p  	= T_I11_r;
+	T_R12_p  	= T_R12_r;
+	T_I12_p  	= T_I12_r;
+	T_R13_p  	= T_R13_r;
+	T_I13_p  	= T_I13_r;
+	T_R14_p  	= T_R14_r;
+	T_I14_p  	= T_I14_r;
+	T_R15_p  	= T_R15_r;
+	T_I15_p  	= T_I15_r;
+	T_R16_p  	= T_R16_r;
+	T_I16_p  	= T_I16_r;
+	T_R17_p  	= T_R17_r;
+	T_I17_p  	= T_I17_r;
 
 
 
@@ -1404,6 +1457,12 @@ always @(*) begin
 	if(wr_enable_i[`WBF_16_T_I1]) begin
 		T_I1_p 				    = -(wbb[23:8]); 
 	end
+	if(wr_enable_i[`WBF_16_T2_R1]) begin
+		T_R1_p 		         	= -(wbb[23:8]);
+	end
+	if(wr_enable_i[`WBF_16_T2_I1]) begin
+		T_I1_p 				    = wbb[23:8]; 
+	end
 	if(wr_enable_i[`WBF_16_T_R2]) begin
 		T_R2_p 		         	= wbb;
 	end
@@ -1464,8 +1523,43 @@ always @(*) begin
 	if(wr_enable_i[`WBF_16_T_I11]) begin
 		T_I11_p 		        = wbb;
 	end
+	if(wr_enable_i[`WBF_16_T_R12]) begin
+		T_R12_p		         	= wbb[23:8];
+	end
+	if(wr_enable_i[`WBF_16_T_I12]) begin
+		T_I12_p		         	= wbb[23:8];
+	end
+	if(wr_enable_i[`WBF_16_T_R13]) begin
+		T_R13_p 		        = -wbb[23:8];
+	end
+	if(wr_enable_i[`WBF_16_T_I13]) begin
+		T_I13_p 		        = wbb[23:8];
+	end
+	if(wr_enable_i[`WBF_16_T_R14]) begin
+		T_R14_p 		        = wbb;
+	end
+	if(wr_enable_i[`WBF_16_T_I14]) begin
+		T_I14_p 		        = wbb;
+	end
+	if(wr_enable_i[`WBF_16_T_R15]) begin
+		T_R15_p		         	= wbb[23:8];
+	end
+	if(wr_enable_i[`WBF_16_T_I15]) begin
+		T_I15_p		         	= wbb[23:8];
+	end
+	if(wr_enable_i[`WBF_16_T_R16]) begin
+		T_R16_p 		        = -wbb[23:8];
+	end
+	if(wr_enable_i[`WBF_16_T_I16]) begin
+		T_I16_p 		        = wbb[23:8];
+	end
+	if(wr_enable_i[`WBF_16_T_R17]) begin
+		T_R17_p 		        = wbb;
+	end
+	if(wr_enable_i[`WBF_16_T_I17]) begin
+		T_I17_p 		        = wbb;
+	end
 
-/*
 
 	// Stage 4
 	if(wr_enable_i[`WBF_16_X_R0]) begin
@@ -1516,9 +1610,57 @@ always @(*) begin
 	if(wr_enable_i[`WBF_16_X_I7]) begin
 		X_7_I_p 		         = wbb;
 	end
+	if(wr_enable_i[`WBF_16_X_R8]) begin
+		X_8_R_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_16_X_I8]) begin
+		X_8_I_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_16_X_R9]) begin
+		X_9_R_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_16_X_I9]) begin
+		X_9_I_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_16_X_R10]) begin
+		X_10_R_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_16_X_I10]) begin
+		X_10_I_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_16_X_R11]) begin
+		X_11_R_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_16_X_I11]) begin
+		X_11_I_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_16_X_R12]) begin
+		X_12_R_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_16_X_I12]) begin
+		X_12_I_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_16_X_R13]) begin
+		X_13_R_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_16_X_I13]) begin
+		X_13_I_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_16_X_R14]) begin
+		X_14_R_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_16_X_I14]) begin
+		X_14_I_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_16_X_R15]) begin
+		X_15_R_p 		         = wbb;
+	end
+	if(wr_enable_i[`WBF_16_X_I15]) begin
+		X_15_I_p 		         = wbb;
+	end
 
 	
-	*/
+	
 	// ALU Register OP_A 
 
 	
@@ -1667,17 +1809,89 @@ always @(*) begin
 	else if(alu_reg_i[`ALUREG_16_S2_I11_TO_OP_A]) begin
 		alu_op_a = S2_I11_p;
 	end
+	else if(alu_reg_i[`ALUREG_16_S3_R0_TO_OP_A]) begin
+		alu_op_a = S3_R0_p;
+	end
+	else if(alu_reg_i[`ALUREG_16_S3_I0_TO_OP_A]) begin
+		alu_op_a = S3_I0_p;
+	end
+	else if(alu_reg_i[`ALUREG_16_S3_R1_TO_OP_A]) begin
+		alu_op_a = S3_R1_p;
+	end
+	else if(alu_reg_i[`ALUREG_16_S3_I1_TO_OP_A]) begin
+		alu_op_a = S3_I1_p;
+	end
+	else if(alu_reg_i[`ALUREG_16_S3_R2_TO_OP_A]) begin
+		alu_op_a = S3_R2_p;
+	end
+	else if(alu_reg_i[`ALUREG_16_S3_I2_TO_OP_A]) begin
+		alu_op_a = S3_I2_p;
+	end
+	else if(alu_reg_i[`ALUREG_16_S3_R3_TO_OP_A]) begin
+		alu_op_a = S3_R3_p;
+	end
+	else if(alu_reg_i[`ALUREG_16_S3_I3_TO_OP_A]) begin
+		alu_op_a = S3_I3_p;
+	end
+	else if(alu_reg_i[`ALUREG_16_S3_R4_TO_OP_A]) begin
+		alu_op_a = S3_R4_p;
+	end
+	else if(alu_reg_i[`ALUREG_16_S3_I4_TO_OP_A]) begin
+		alu_op_a = S3_I4_p;
+	end
+	else if(alu_reg_i[`ALUREG_16_S3_R5_TO_OP_A]) begin
+		alu_op_a = S3_R5_p;
+	end
+	else if(alu_reg_i[`ALUREG_16_S3_I5_TO_OP_A]) begin
+		alu_op_a = S3_I5_p;
+	end
+	else if(alu_reg_i[`ALUREG_16_S3_R6_TO_OP_A]) begin
+		alu_op_a = S3_R6_p;
+	end
+	else if(alu_reg_i[`ALUREG_16_S3_I6_TO_OP_A]) begin
+		alu_op_a = S3_I6_p;
+	end
+	else if(alu_reg_i[`ALUREG_16_S3_R7_TO_OP_A]) begin
+		alu_op_a = S3_R7_p;
+	end
+	else if(alu_reg_i[`ALUREG_16_S3_I7_TO_OP_A]) begin
+		alu_op_a = S3_I7_p;
+	end
+	else if(alu_reg_i[`ALUREG_W_16_1_REEL_TO_OP_A]) begin
+		alu_op_a = `W_16_1_REEL;
+	end
+	else if(alu_reg_i[`ALUREG_W_16_1_IMAG_TO_OP_A]) begin
+		alu_op_a = `W_16_1_IMAG;
+	end
 	else if(alu_reg_i[`ALUREG_W_16_2_REEL_TO_OP_A]) begin
 		alu_op_a = `W_16_2_REEL;
 	end
 	else if(alu_reg_i[`ALUREG_W_16_2_IMAG_TO_OP_A]) begin
 		alu_op_a = `W_16_2_IMAG;
 	end
+	else if(alu_reg_i[`ALUREG_W_16_3_REEL_TO_OP_A]) begin
+		alu_op_a = `W_16_3_REEL;
+	end
+	else if(alu_reg_i[`ALUREG_W_16_3_IMAG_TO_OP_A]) begin
+		alu_op_a = `W_16_3_IMAG;
+	end
+	else if(alu_reg_i[`ALUREG_W_16_5_REEL_TO_OP_A]) begin
+		alu_op_a = `W_16_5_REEL;
+	end
+	else if(alu_reg_i[`ALUREG_W_16_5_IMAG_TO_OP_A]) begin
+		alu_op_a = `W_16_5_IMAG;
+	end
 	else if(alu_reg_i[`ALUREG_W_16_6_REEL_TO_OP_A]) begin
 		alu_op_a = `W_16_6_REEL;
 	end
 	else if(alu_reg_i[`ALUREG_W_16_6_IMAG_TO_OP_A]) begin
 		alu_op_a = `W_16_6_IMAG;
+	end
+	else if(alu_reg_i[`ALUREG_W_16_7_REEL_TO_OP_A]) begin
+		alu_op_a = `W_16_7_REEL;
+	end
+	else if(alu_reg_i[`ALUREG_W_16_7_IMAG_TO_OP_A]) begin
+		alu_op_a = `W_16_7_IMAG;
 	end
 	else if(alu_reg_i[`ALUREG_16_T_R0_TO_OP_A]) begin
 		alu_op_a = T_R0_p;
@@ -1703,37 +1917,18 @@ always @(*) begin
 	else if(alu_reg_i[`ALUREG_16_T_I9_TO_OP_A]) begin
 		alu_op_a = T_I9_p;
 	end
-
-	/*
-	else if(alu_reg_i[`ALUREG_16_S2_R0_TO_OP_A]) begin
-		alu_op_a = S2_R0_p;
+	else if(alu_reg_i[`ALUREG_16_T_R12_TO_OP_A]) begin
+		alu_op_a = T_R12_p;
 	end
-
-	else if(alu_reg_i[`ALUREG_16_S2_I0_TO_OP_A]) begin
-		alu_op_a = S2_I0_p;
+	else if(alu_reg_i[`ALUREG_16_T_I12_TO_OP_A]) begin
+		alu_op_a = T_I12_p;
 	end
-	else if(alu_reg_i[`ALUREG_16_S2_R1_TO_OP_A]) begin
-		alu_op_a = S2_R1_p;
+	else if(alu_reg_i[`ALUREG_16_T_R15_TO_OP_A]) begin
+		alu_op_a = T_R15_p;
 	end
-	else if(alu_reg_i[`ALUREG_16_S2_I1_TO_OP_A]) begin
-		alu_op_a = S2_I1_p;
+	else if(alu_reg_i[`ALUREG_16_T_I15_TO_OP_A]) begin
+		alu_op_a = T_I15_p;
 	end
-	else if(alu_reg_i[`ALUREG_16_S2_R2_TO_OP_A]) begin
-		alu_op_a = S2_R2_p;
-	end
-	else if(alu_reg_i[`ALUREG_16_S2_I2_TO_OP_A]) begin
-		alu_op_a = S2_I2_p;
-	end
-	else if(alu_reg_i[`ALUREG_16_S2_R3_TO_OP_A]) begin
-		alu_op_a = S2_R3_p;
-	end
-	else if(alu_reg_i[`ALUREG_16_S2_I3_TO_OP_A]) begin
-		alu_op_a = S2_I3_p;
-	end
-
-
-	*/
-
 
 
 	// ALU Register OP_B 
@@ -1883,6 +2078,54 @@ always @(*) begin
 	else if(alu_reg_i[`ALUREG_16_S2_I15_TO_OP_B]) begin
 		alu_op_b = S2_I15_p;
 	end
+	else if(alu_reg_i[`ALUREG_16_S3_R8_TO_OP_B]) begin
+		alu_op_b = S3_R8_p;
+	end
+	else if(alu_reg_i[`ALUREG_16_S3_I8_TO_OP_B]) begin
+		alu_op_b = S3_I8_p;
+	end
+	else if(alu_reg_i[`ALUREG_16_S3_R9_TO_OP_B]) begin
+		alu_op_b = S3_R9_p;
+	end
+	else if(alu_reg_i[`ALUREG_16_S3_I9_TO_OP_B]) begin
+		alu_op_b = S3_I9_p;
+	end
+	else if(alu_reg_i[`ALUREG_16_S3_R10_TO_OP_B]) begin
+		alu_op_b = S3_R10_p;
+	end
+	else if(alu_reg_i[`ALUREG_16_S3_I10_TO_OP_B]) begin
+		alu_op_b = S3_I10_p;
+	end
+	else if(alu_reg_i[`ALUREG_16_S3_R11_TO_OP_B]) begin
+		alu_op_b = S3_R11_p;
+	end
+	else if(alu_reg_i[`ALUREG_16_S3_I11_TO_OP_B]) begin
+		alu_op_b = S3_I11_p;
+	end
+	else if(alu_reg_i[`ALUREG_16_S3_R12_TO_OP_B]) begin
+		alu_op_b = S3_R12_p;
+	end
+	else if(alu_reg_i[`ALUREG_16_S3_I12_TO_OP_B]) begin
+		alu_op_b = -S3_I12_p;
+	end
+	else if(alu_reg_i[`ALUREG_16_S3_R13_TO_OP_B]) begin
+		alu_op_b = S3_R13_p;
+	end
+	else if(alu_reg_i[`ALUREG_16_S3_I13_TO_OP_B]) begin
+		alu_op_b = S3_I13_p;
+	end
+	else if(alu_reg_i[`ALUREG_16_S3_R14_TO_OP_B]) begin
+		alu_op_b = S3_R14_p;
+	end
+	else if(alu_reg_i[`ALUREG_16_S3_I14_TO_OP_B]) begin
+		alu_op_b = S3_I14_p;
+	end
+	else if(alu_reg_i[`ALUREG_16_S3_R15_TO_OP_B]) begin
+		alu_op_b = S3_R15_p;
+	end
+	else if(alu_reg_i[`ALUREG_16_S3_I15_TO_OP_B]) begin
+		alu_op_b = S3_I15_p;
+	end
 	else if(alu_reg_i[`ALUREG_16_T_R1_TO_OP_B]) begin
 		alu_op_b = T_R1_p;
 	end
@@ -1931,43 +2174,30 @@ always @(*) begin
 	else if(alu_reg_i[`ALUREG_16_T_I11_TO_OP_B]) begin
 		alu_op_b = T_I11_p;
 	end
-
-
-	/*
-	else if(alu_reg_i[`ALUREG_16_S2_R4_TO_OP_B]) begin
-		alu_op_b = S2_R4_p;
+	else if(alu_reg_i[`ALUREG_16_T_R13_TO_OP_B]) begin
+		alu_op_b = T_R13_p;
 	end
-	else if(alu_reg_i[`ALUREG_16_S2_I4_TO_OP_B]) begin
-		alu_op_b = S2_I4_p;
+	else if(alu_reg_i[`ALUREG_16_T_I13_TO_OP_B]) begin
+		alu_op_b = T_I13_p;
 	end
-	else if(alu_reg_i[`ALUREG_16_S2_R5_TO_OP_B]) begin
-		alu_op_b = S2_R5_p;
+	else if(alu_reg_i[`ALUREG_16_T_R14_TO_OP_B]) begin
+		alu_op_b = T_R14_p;
 	end
-	else if(alu_reg_i[`ALUREG_16_S2_I5_TO_OP_B]) begin
-		alu_op_b = S2_I5_p;
+	else if(alu_reg_i[`ALUREG_16_T_I14_TO_OP_B]) begin
+		alu_op_b = T_I14_p;
 	end
-	else if(alu_reg_i[`ALUREG_16_S2_R6_TO_OP_B]) begin
-		alu_op_b = S2_R6_p;
+	else if(alu_reg_i[`ALUREG_16_T_R16_TO_OP_B]) begin
+		alu_op_b = T_R16_p;
 	end
-	else if(alu_reg_i[`ALUREG_16_S2_I6_TO_OP_B]) begin
-		alu_op_b = -S2_I6_p;
+	else if(alu_reg_i[`ALUREG_16_T_I16_TO_OP_B]) begin
+		alu_op_b = T_I16_p;
 	end
-	else if(alu_reg_i[`ALUREG_16_S2_R7_TO_OP_B]) begin
-		alu_op_b = S2_R7_p;
+	else if(alu_reg_i[`ALUREG_16_T_R17_TO_OP_B]) begin
+		alu_op_b = T_R17_p;
 	end
-	else if(alu_reg_i[`ALUREG_16_S2_I7_TO_OP_B]) begin
-		alu_op_b = S2_I7_p;
+	else if(alu_reg_i[`ALUREG_16_T_I17_TO_OP_B]) begin
+		alu_op_b = T_I17_p;
 	end
-
-	*/
-
-
-
-
-
-
-
-	
 
 
 end

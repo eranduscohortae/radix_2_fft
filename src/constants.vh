@@ -303,12 +303,57 @@
 `define ALUREG_16_T_I10_TO_OP_B 				 129
 `define ALUREG_16_T_R11_TO_OP_B 				 130
 `define ALUREG_16_T_I11_TO_OP_B 				 131
+`define ALUREG_16_T_R12_TO_OP_A 				 132
+`define ALUREG_16_T_I12_TO_OP_A      			 133
+`define ALUREG_16_T_R13_TO_OP_B 				 134
+`define ALUREG_16_T_I13_TO_OP_B 				 135
+`define ALUREG_16_T_R14_TO_OP_B 				 136
+`define ALUREG_16_T_I14_TO_OP_B 				 137
+`define ALUREG_16_T_R15_TO_OP_A 				 138
+`define ALUREG_16_T_I15_TO_OP_A 				 139
+`define ALUREG_16_T_R16_TO_OP_B 				 140
+`define ALUREG_16_T_I16_TO_OP_B 				 141
+`define ALUREG_16_T_R17_TO_OP_B 				 142
+`define ALUREG_16_T_I17_TO_OP_B 				 143
 
-`define WBF_16_S1_R0 							     0
-`define WBF_16_S1_I0 							     1
-`define WBF_16_S1_R1 							     2
-`define WBF_16_S1_I1 							     3
-`define WBF_16_S1_R2 							     4
+`define ALUREG_16_S3_R0_TO_OP_A 				 144
+`define ALUREG_16_S3_I0_TO_OP_A 				 145
+`define ALUREG_16_S3_R1_TO_OP_A 				 146
+`define ALUREG_16_S3_I1_TO_OP_A 				 147
+`define ALUREG_16_S3_R2_TO_OP_A 				 148
+`define ALUREG_16_S3_I2_TO_OP_A 				 149
+`define ALUREG_16_S3_R3_TO_OP_A 				 150
+`define ALUREG_16_S3_I3_TO_OP_A 				 151
+`define ALUREG_16_S3_R4_TO_OP_A 				 152
+`define ALUREG_16_S3_I4_TO_OP_A 				 153
+`define ALUREG_16_S3_R5_TO_OP_A 				 154
+`define ALUREG_16_S3_I5_TO_OP_A 				 155
+`define ALUREG_16_S3_R6_TO_OP_A 				 156
+`define ALUREG_16_S3_I6_TO_OP_A 				 157
+`define ALUREG_16_S3_R7_TO_OP_A 				 158
+`define ALUREG_16_S3_I7_TO_OP_A 				 159
+`define ALUREG_16_S3_R8_TO_OP_B 				 160
+`define ALUREG_16_S3_I8_TO_OP_B 				 161
+`define ALUREG_16_S3_R9_TO_OP_B 				 162
+`define ALUREG_16_S3_I9_TO_OP_B 				 163
+`define ALUREG_16_S3_R10_TO_OP_B 				 164
+`define ALUREG_16_S3_I10_TO_OP_B 				 165
+`define ALUREG_16_S3_R11_TO_OP_B 				 166
+`define ALUREG_16_S3_I11_TO_OP_B 				 167
+`define ALUREG_16_S3_R12_TO_OP_B 				 168
+`define ALUREG_16_S3_I12_TO_OP_B 				 169
+`define ALUREG_16_S3_R13_TO_OP_B 				 170
+`define ALUREG_16_S3_I13_TO_OP_B 				 171
+`define ALUREG_16_S3_R14_TO_OP_B 				 172
+`define ALUREG_16_S3_I14_TO_OP_B 				 173
+`define ALUREG_16_S3_R15_TO_OP_B 				 174
+`define ALUREG_16_S3_I15_TO_OP_B 				 175
+
+`define WBF_16_S1_R0 							 0
+`define WBF_16_S1_I0 							 1
+`define WBF_16_S1_R1 							 2
+`define WBF_16_S1_I1 							 3
+`define WBF_16_S1_R2 							 4
 `define WBF_16_S1_I2 							     5
 `define WBF_16_S1_R3 							     6
 `define WBF_16_S1_I3 							     7
@@ -428,30 +473,75 @@
 `define WBF_16_T_R11 							 	 118
 `define WBF_16_T_I11 							 	 119
 
-/*
-`define WBF_16_X_R0								 32
-`define WBF_16_X_I0								 33
-`define WBF_16_X_R1								 34
-`define WBF_16_X_I1								 35
-`define WBF_16_X_R2								 36
-`define WBF_16_X_I2								 37
-`define WBF_16_X_R3								 38
-`define WBF_16_X_I3								 39
-`define WBF_16_X_R4								 40
-`define WBF_16_X_I4								 41
-`define WBF_16_X_R5								 42
-`define WBF_16_X_I5								 43
-`define WBF_16_X_R6								 44
-`define WBF_16_X_I6								 45
-`define WBF_16_X_R7								 46
-`define WBF_16_X_I7								 47
-*/
+`define WBF_16_T2_R1	 						     120
+`define WBF_16_T2_I1	 							 121
+`define WBF_16_T_R12	 							 122
+`define WBF_16_T_I12	 						 	 123
+`define WBF_16_T_R13 							 	 124
+`define WBF_16_T_I13 							 	 125
+`define WBF_16_T_R14 							 	 126
+`define WBF_16_T_I14 							 	 127
+`define WBF_16_T_R15	 							 128
+`define WBF_16_T_I15	 						 	 129
+`define WBF_16_T_R16 							 	 130
+`define WBF_16_T_I16 							 	 131
+`define WBF_16_T_R17 							 	 132
+`define WBF_16_T_I17 							 	 133
+
+`define WBF_16_X_R0								 	 134
+`define WBF_16_X_I0								 	 135
+`define WBF_16_X_R1								 	 136
+`define WBF_16_X_I1								 	 137
+`define WBF_16_X_R2								 	 138
+`define WBF_16_X_I2								 	 139
+`define WBF_16_X_R3								 	 140
+`define WBF_16_X_I3								 	 141
+`define WBF_16_X_R4								 	 142
+`define WBF_16_X_I4								 	 143
+`define WBF_16_X_R5								 	 144
+`define WBF_16_X_I5								 	 145
+`define WBF_16_X_R6								 	 146
+`define WBF_16_X_I6								 	 147
+`define WBF_16_X_R7								 	 148
+`define WBF_16_X_I7								 	 149
+`define WBF_16_X_R8								 	 150
+`define WBF_16_X_I8								 	 151
+`define WBF_16_X_R9								 	 152
+`define WBF_16_X_I9								 	 153
+`define WBF_16_X_R10							 	 154
+`define WBF_16_X_I10							 	 155
+`define WBF_16_X_R11							 	 156
+`define WBF_16_X_I11							 	 157
+`define WBF_16_X_R12							 	 158
+`define WBF_16_X_I12							 	 159
+`define WBF_16_X_R13							 	 160
+`define WBF_16_X_I13							 	 161
+`define WBF_16_X_R14							 	 162
+`define WBF_16_X_I14							 	 163
+`define WBF_16_X_R15							 	 164
+`define WBF_16_X_I15							 	 165
+
+
+
+
+
+`define W_16_1_REEL								   16'b00000000_11101100  //  0.921875
+`define W_16_1_IMAG								 -(16'b00000000_01100010) // -j*0.3828125
 
 `define W_16_2_REEL								   16'b00000000_10110101  //  0.70703125
 `define W_16_2_IMAG								 -(16'b00000000_10110101) // -j*0.70703125
 
+`define W_16_3_REEL								   16'b00000000_01100010  //  0.3828125
+`define W_16_3_IMAG								 -(16'b00000000_11101100) // -j* 0.921875
+
+`define W_16_5_REEL								 -(16'b00000000_01100010) //  0.3828125
+`define W_16_5_IMAG								 -(16'b00000000_11101100) // -j* 0.921875
+
 `define W_16_6_REEL								 -(16'b00000000_10110101) // -0.70703125
 `define W_16_6_IMAG								 -(16'b00000000_10110101) // -j*0.70703125
+
+`define W_16_7_REEL								 -(16'b00000000_11101100) // -0.921875
+`define W_16_7_IMAG								 -(16'b00000000_01100010) // -j*0.3828125
 
 
 `endif

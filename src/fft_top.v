@@ -148,8 +148,8 @@ wire [59:0] fft8_wr_enable_c;
 wire [63:0] fft8_alu_reg_c;
 wire [4:0]  fft8_alu_mode_c;
 
-wire [127:0] fft16_wr_enable_c;
-wire [150:0] fft16_alu_reg_c;
+wire [165:0] fft16_wr_enable_c;
+wire [175:0] fft16_alu_reg_c;
 wire [4:0]  fft16_alu_mode_c;
 
 

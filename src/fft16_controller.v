@@ -7,9 +7,9 @@ module fft16_controller(
 							input rst,
 							input start_i,
 
-							output reg [150:0] alu_reg_o,
+							output reg [175:0] alu_reg_o,
 							output reg [4:0] alu_mode_o,
-							output reg [127:0] wr_enable_o,
+							output reg [165:0] wr_enable_o,
 							output busy_o,
 							output valid_o
 
@@ -149,11 +149,81 @@ localparam FSM_STAGE3_T_I10		 = 118;
 localparam FSM_STAGE3_T_R11		 = 119;
 localparam FSM_STAGE3_T_I11		 = 120;
 
-/*
-localparam FSM_WAIT_END			 = 109;
-localparam FSM_END 				 = 110;
-*/
-reg [6:0]  current_state, next_state;
+localparam FSM_STAGE4_R0         = 121;
+localparam FSM_STAGE4_I0         = 122;
+localparam FSM_STAGE4_R1         = 123;
+localparam FSM_STAGE4_I1         = 124;
+localparam FSM_STAGE4_R2         = 125;
+localparam FSM_STAGE4_I2         = 126;
+localparam FSM_STAGE4_R3         = 127;
+localparam FSM_STAGE4_I3         = 128;
+localparam FSM_STAGE4_R4         = 129;
+localparam FSM_STAGE4_I4         = 130;
+localparam FSM_STAGE4_R5         = 131;
+localparam FSM_STAGE4_I5         = 132;
+localparam FSM_STAGE4_R6         = 133;
+localparam FSM_STAGE4_I6         = 134;
+localparam FSM_STAGE4_R7         = 135;
+localparam FSM_STAGE4_I7         = 136;
+localparam FSM_STAGE4_R8         = 137;
+localparam FSM_STAGE4_I8         = 138;
+localparam FSM_STAGE4_R9         = 139;
+localparam FSM_STAGE4_I9         = 140;
+localparam FSM_STAGE4_R10        = 141;
+localparam FSM_STAGE4_I10        = 142;
+localparam FSM_STAGE4_R11        = 143;
+localparam FSM_STAGE4_I11        = 144;
+localparam FSM_STAGE4_R12        = 145;
+localparam FSM_STAGE4_I12        = 146;
+localparam FSM_STAGE4_R13        = 147;
+localparam FSM_STAGE4_I13        = 148;
+localparam FSM_STAGE4_R14        = 149;
+localparam FSM_STAGE4_I14        = 150;
+localparam FSM_STAGE4_R15        = 151;
+localparam FSM_STAGE4_I15        = 152;
+
+localparam FSM_STAGE4_T2_R0		 = 153;
+localparam FSM_STAGE4_T2_I0		 = 154;
+localparam FSM_STAGE4_T2_R1		 = 155;
+localparam FSM_STAGE4_T2_I1		 = 156;
+localparam FSM_STAGE4_T2_R2		 = 157;
+localparam FSM_STAGE4_T2_I2		 = 158;
+localparam FSM_STAGE4_T2_R3		 = 159;
+localparam FSM_STAGE4_T2_I3		 = 160;
+localparam FSM_STAGE4_T2_R4		 = 161;
+localparam FSM_STAGE4_T2_I4		 = 162;
+localparam FSM_STAGE4_T2_R5		 = 163;
+localparam FSM_STAGE4_T2_I5		 = 164;
+localparam FSM_STAGE4_T2_R6		 = 165;
+localparam FSM_STAGE4_T2_I6		 = 166;
+localparam FSM_STAGE4_T2_R7		 = 167;
+localparam FSM_STAGE4_T2_I7		 = 168;
+localparam FSM_STAGE4_T2_R8		 = 169;
+localparam FSM_STAGE4_T2_I8		 = 170;
+localparam FSM_STAGE4_T2_R9		 = 171;
+localparam FSM_STAGE4_T2_I9		 = 172;
+localparam FSM_STAGE4_T2_R10	 = 173;
+localparam FSM_STAGE4_T2_I10	 = 174;
+localparam FSM_STAGE4_T2_R11	 = 175;
+localparam FSM_STAGE4_T2_I11	 = 176;
+localparam FSM_STAGE4_T2_R12	 = 178;
+localparam FSM_STAGE4_T2_I12	 = 179;
+localparam FSM_STAGE4_T2_R13	 = 180;
+localparam FSM_STAGE4_T2_I13	 = 181;
+localparam FSM_STAGE4_T2_R14	 = 182;
+localparam FSM_STAGE4_T2_I14	 = 183;
+localparam FSM_STAGE4_T2_R15	 = 184;
+localparam FSM_STAGE4_T2_I15	 = 185;
+localparam FSM_STAGE4_T2_R16	 = 186;
+localparam FSM_STAGE4_T2_I16	 = 187;
+localparam FSM_STAGE4_T2_R17	 = 188;
+localparam FSM_STAGE4_T2_I17	 = 189;
+
+
+localparam FSM_WAIT_END			 = 190;
+localparam FSM_END 				 = 191;
+
+reg [8:0]  current_state, next_state;
 
 
 
@@ -222,7 +292,7 @@ always @(*) begin
 
 		FSM_STAGE1_I0: begin
 
-			wr_enable_o[`WBF_16_S1_R0]					= `HIGH;
+			wr_enable_o[`WBF_16_S1_R0]				= `HIGH;
 			alu_reg_o[`ALUREG_16_X_I0_TO_OP_A] 		= `HIGH;
 			alu_reg_o[`ALUREG_16_X_I8_TO_OP_B]		= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_ADD_B;
@@ -232,7 +302,7 @@ always @(*) begin
 
 		FSM_STAGE1_R1: begin
 
-			wr_enable_o[`WBF_16_S1_I0]					= `HIGH;
+			wr_enable_o[`WBF_16_S1_I0]				= `HIGH;
 			alu_reg_o[`ALUREG_16_X_R0_TO_OP_A] 		= `HIGH;
 			alu_reg_o[`ALUREG_16_X_R8_TO_OP_B]		= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_SUB_B;
@@ -242,7 +312,7 @@ always @(*) begin
 
 		FSM_STAGE1_I1: begin
 
-			wr_enable_o[`WBF_16_S1_R1]					= `HIGH;
+			wr_enable_o[`WBF_16_S1_R1]				= `HIGH;
 			alu_reg_o[`ALUREG_16_X_I0_TO_OP_A] 		= `HIGH;
 			alu_reg_o[`ALUREG_16_X_I8_TO_OP_B]		= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_SUB_B;
@@ -252,7 +322,7 @@ always @(*) begin
 
 		FSM_STAGE1_R2: begin
 
-			wr_enable_o[`WBF_16_S1_I1]					= `HIGH;
+			wr_enable_o[`WBF_16_S1_I1]				= `HIGH;
 			alu_reg_o[`ALUREG_16_X_R4_TO_OP_A] 		= `HIGH;
 			alu_reg_o[`ALUREG_16_X_R12_TO_OP_B]		= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_ADD_B;
@@ -262,7 +332,7 @@ always @(*) begin
 
 		FSM_STAGE1_I2: begin
 
-			wr_enable_o[`WBF_16_S1_R2]					= `HIGH;
+			wr_enable_o[`WBF_16_S1_R2]				= `HIGH;
 			alu_reg_o[`ALUREG_16_X_I4_TO_OP_A] 		= `HIGH;
 			alu_reg_o[`ALUREG_16_X_I12_TO_OP_B]		= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_ADD_B;
@@ -272,7 +342,7 @@ always @(*) begin
 
 		FSM_STAGE1_R3: begin
 
-			wr_enable_o[`WBF_16_S1_I2]					= `HIGH;
+			wr_enable_o[`WBF_16_S1_I2]				= `HIGH;
 			alu_reg_o[`ALUREG_16_X_R4_TO_OP_A] 		= `HIGH;
 			alu_reg_o[`ALUREG_16_X_R12_TO_OP_B]		= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_SUB_B;
@@ -282,7 +352,7 @@ always @(*) begin
 
 		FSM_STAGE1_I3: begin
 
-			wr_enable_o[`WBF_16_S1_R3]					= `HIGH;
+			wr_enable_o[`WBF_16_S1_R3]				= `HIGH;
 			alu_reg_o[`ALUREG_16_X_I4_TO_OP_A] 		= `HIGH;
 			alu_reg_o[`ALUREG_16_X_I12_TO_OP_B]		= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_SUB_B;
@@ -292,7 +362,7 @@ always @(*) begin
 
 		FSM_STAGE1_R4: begin
 
-			wr_enable_o[`WBF_16_S1_I3]					= `HIGH;
+			wr_enable_o[`WBF_16_S1_I3]				= `HIGH;
 			alu_reg_o[`ALUREG_16_X_R2_TO_OP_A] 		= `HIGH;
 			alu_reg_o[`ALUREG_16_X_R10_TO_OP_B]		= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_ADD_B;
@@ -302,7 +372,7 @@ always @(*) begin
 
 		FSM_STAGE1_I4: begin
 
-			wr_enable_o[`WBF_16_S1_R4]					= `HIGH;
+			wr_enable_o[`WBF_16_S1_R4]				= `HIGH;
 			alu_reg_o[`ALUREG_16_X_I2_TO_OP_A] 		= `HIGH;
 			alu_reg_o[`ALUREG_16_X_I10_TO_OP_B]		= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_ADD_B;
@@ -312,7 +382,7 @@ always @(*) begin
 
 		FSM_STAGE1_R5: begin
 
-			wr_enable_o[`WBF_16_S1_I4]					= `HIGH;
+			wr_enable_o[`WBF_16_S1_I4]				= `HIGH;
 			alu_reg_o[`ALUREG_16_X_R2_TO_OP_A] 		= `HIGH;
 			alu_reg_o[`ALUREG_16_X_R10_TO_OP_B]		= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_SUB_B;
@@ -322,7 +392,7 @@ always @(*) begin
 
 		FSM_STAGE1_I5: begin
 
-			wr_enable_o[`WBF_16_S1_R5]					= `HIGH;
+			wr_enable_o[`WBF_16_S1_R5]				= `HIGH;
 			alu_reg_o[`ALUREG_16_X_I2_TO_OP_A] 		= `HIGH;
 			alu_reg_o[`ALUREG_16_X_I10_TO_OP_B]		= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_SUB_B;
@@ -332,7 +402,7 @@ always @(*) begin
 
 		FSM_STAGE1_R6: begin
 
-			wr_enable_o[`WBF_16_S1_I5]					= `HIGH;
+			wr_enable_o[`WBF_16_S1_I5]				= `HIGH;
 			alu_reg_o[`ALUREG_16_X_R6_TO_OP_A] 		= `HIGH;
 			alu_reg_o[`ALUREG_16_X_R14_TO_OP_B]		= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_ADD_B;
@@ -342,7 +412,7 @@ always @(*) begin
 
 		FSM_STAGE1_I6: begin
 
-			wr_enable_o[`WBF_16_S1_R6]					= `HIGH;
+			wr_enable_o[`WBF_16_S1_R6]				= `HIGH;
 			alu_reg_o[`ALUREG_16_X_I6_TO_OP_A] 		= `HIGH;
 			alu_reg_o[`ALUREG_16_X_I14_TO_OP_B]		= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_ADD_B;
@@ -352,7 +422,7 @@ always @(*) begin
 
 		FSM_STAGE1_R7: begin
 
-			wr_enable_o[`WBF_16_S1_I6]					= `HIGH;
+			wr_enable_o[`WBF_16_S1_I6]				= `HIGH;
 			alu_reg_o[`ALUREG_16_X_R6_TO_OP_A] 		= `HIGH;
 			alu_reg_o[`ALUREG_16_X_R14_TO_OP_B]		= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_SUB_B;
@@ -362,7 +432,7 @@ always @(*) begin
 
 		FSM_STAGE1_I7: begin
 
-			wr_enable_o[`WBF_16_S1_R7]					= `HIGH;
+			wr_enable_o[`WBF_16_S1_R7]				= `HIGH;
 			alu_reg_o[`ALUREG_16_X_I6_TO_OP_A] 		= `HIGH;
 			alu_reg_o[`ALUREG_16_X_I14_TO_OP_B]		= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_SUB_B;
@@ -372,7 +442,7 @@ always @(*) begin
 
 		FSM_STAGE1_R8: begin
 
-			wr_enable_o[`WBF_16_S1_I7]					= `HIGH;
+			wr_enable_o[`WBF_16_S1_I7]				= `HIGH;
 			alu_reg_o[`ALUREG_16_X_R1_TO_OP_A] 		= `HIGH;
 			alu_reg_o[`ALUREG_16_X_R9_TO_OP_B]		= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_ADD_B;
@@ -382,7 +452,7 @@ always @(*) begin
 
 		FSM_STAGE1_I8: begin
 
-			wr_enable_o[`WBF_16_S1_R8]					= `HIGH;
+			wr_enable_o[`WBF_16_S1_R8]				= `HIGH;
 			alu_reg_o[`ALUREG_16_X_I1_TO_OP_A] 		= `HIGH;
 			alu_reg_o[`ALUREG_16_X_I9_TO_OP_B]		= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_ADD_B;
@@ -393,7 +463,7 @@ always @(*) begin
 
 		FSM_STAGE1_R9: begin
 
-			wr_enable_o[`WBF_16_S1_I8]					= `HIGH;
+			wr_enable_o[`WBF_16_S1_I8]				= `HIGH;
 			alu_reg_o[`ALUREG_16_X_R1_TO_OP_A] 		= `HIGH;
 			alu_reg_o[`ALUREG_16_X_R9_TO_OP_B]		= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_SUB_B;
@@ -403,7 +473,7 @@ always @(*) begin
 
 		FSM_STAGE1_I9: begin
 
-			wr_enable_o[`WBF_16_S1_R9]					= `HIGH;
+			wr_enable_o[`WBF_16_S1_R9]				= `HIGH;
 			alu_reg_o[`ALUREG_16_X_I1_TO_OP_A] 		= `HIGH;
 			alu_reg_o[`ALUREG_16_X_I9_TO_OP_B]		= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_SUB_B;
@@ -413,7 +483,7 @@ always @(*) begin
 
 		FSM_STAGE1_R10: begin
 
-			wr_enable_o[`WBF_16_S1_I9]					= `HIGH;
+			wr_enable_o[`WBF_16_S1_I9]				= `HIGH;
 			alu_reg_o[`ALUREG_16_X_R5_TO_OP_A] 		= `HIGH;
 			alu_reg_o[`ALUREG_16_X_R13_TO_OP_B]		= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_ADD_B;
@@ -474,7 +544,7 @@ always @(*) begin
 
 		FSM_STAGE1_R13: begin
 
-			wr_enable_o[`WBF_16_S1_I12]					= `HIGH;
+			wr_enable_o[`WBF_16_S1_I12]				= `HIGH;
 			alu_reg_o[`ALUREG_16_X_R3_TO_OP_A] 		= `HIGH;
 			alu_reg_o[`ALUREG_16_X_R11_TO_OP_B]		= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_SUB_B;
@@ -484,7 +554,7 @@ always @(*) begin
 
 		FSM_STAGE1_I13: begin
 
-			wr_enable_o[`WBF_16_S1_R13]					= `HIGH;
+			wr_enable_o[`WBF_16_S1_R13]				= `HIGH;
 			alu_reg_o[`ALUREG_16_X_I3_TO_OP_A] 		= `HIGH;
 			alu_reg_o[`ALUREG_16_X_I11_TO_OP_B]		= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_SUB_B;
@@ -1197,8 +1267,8 @@ always @(*) begin
 		FSM_STAGE3_R1: begin
 
 			wr_enable_o[`WBF_16_T_I11]				= `HIGH;
-			alu_reg_o[`ALUREG_S2_R1_TO_OP_A] 		= `HIGH;
-			alu_reg_o[`ALUREG_T_R2_TO_OP_B]  	  	= `HIGH;
+			alu_reg_o[`ALUREG_16_S2_R1_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_R2_TO_OP_B]  	= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_ADD_B;			
 			next_state 								= FSM_STAGE3_I1;	
 			
@@ -1208,8 +1278,8 @@ always @(*) begin
 		FSM_STAGE3_I1: begin
 
 			wr_enable_o[`WBF_16_S3_R1]				= `HIGH;
-			alu_reg_o[`ALUREG_S2_I1_TO_OP_A] 		= `HIGH;
-			alu_reg_o[`ALUREG_T_I2_TO_OP_B]  	  	= `HIGH;
+			alu_reg_o[`ALUREG_16_S2_I1_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_I2_TO_OP_B]  	= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_ADD_B;			
 			next_state 								= FSM_STAGE3_R5;	
 											
@@ -1218,8 +1288,8 @@ always @(*) begin
 		FSM_STAGE3_R5: begin
 
 			wr_enable_o[`WBF_16_S3_I1]				= `HIGH;
-			alu_reg_o[`ALUREG_S2_R1_TO_OP_A] 		= `HIGH;
-			alu_reg_o[`ALUREG_T_R2_TO_OP_B]  	  	= `HIGH;
+			alu_reg_o[`ALUREG_16_S2_R1_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_R2_TO_OP_B]  	= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_SUB_B;			
 			next_state 								= FSM_STAGE3_I5;	
 											
@@ -1228,8 +1298,8 @@ always @(*) begin
 		FSM_STAGE3_I5: begin
 
 			wr_enable_o[`WBF_16_S3_R5]			    = `HIGH;
-			alu_reg_o[`ALUREG_S2_I1_TO_OP_A] 		= `HIGH;
-			alu_reg_o[`ALUREG_T_I2_TO_OP_B]  	  	= `HIGH;
+			alu_reg_o[`ALUREG_16_S2_I1_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_I2_TO_OP_B]  	= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_SUB_B;			
 			next_state 								= FSM_STAGE3_R9;	
 											
@@ -1238,8 +1308,8 @@ always @(*) begin
 		FSM_STAGE3_R9: begin
 
 			wr_enable_o[`WBF_16_S3_I5]				= `HIGH;
-			alu_reg_o[`ALUREG_S2_R9_TO_OP_A] 		= `HIGH;
-			alu_reg_o[`ALUREG_T_R5_TO_OP_B]  	  	= `HIGH;
+			alu_reg_o[`ALUREG_16_S2_R9_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_R5_TO_OP_B]  	= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_ADD_B;			
 			next_state 								= FSM_STAGE3_I9;	
 											
@@ -1248,17 +1318,17 @@ always @(*) begin
 		FSM_STAGE3_I9: begin
 
 			wr_enable_o[`WBF_16_S3_R9]				= `HIGH;
-			alu_reg_o[`ALUREG_S2_I9_TO_OP_A] 		= `HIGH;
-			alu_reg_o[`ALUREG_T_I5_TO_OP_B]  	  	= `HIGH;
+			alu_reg_o[`ALUREG_16_S2_I9_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_I5_TO_OP_B]  	= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_ADD_B;			
 			next_state 								= FSM_STAGE3_R13;	
 											
 		end
 		FSM_STAGE3_R13: begin
 
-			wr_enable_o[`WBF_16_S3_I9]				    = `HIGH;
-			alu_reg_o[`ALUREG_S2_R9_TO_OP_A] 		= `HIGH;
-			alu_reg_o[`ALUREG_T_R5_TO_OP_B]  	  	= `HIGH;
+			wr_enable_o[`WBF_16_S3_I9]				= `HIGH;
+			alu_reg_o[`ALUREG_16_S2_R9_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_R5_TO_OP_B]  	= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_SUB_B;			
 			next_state 								= FSM_STAGE3_I13;	
 											
@@ -1267,8 +1337,8 @@ always @(*) begin
 		FSM_STAGE3_I13: begin
 
 			wr_enable_o[`WBF_16_S3_R13]				= `HIGH;
-			alu_reg_o[`ALUREG_S2_I9_TO_OP_A] 		= `HIGH;
-			alu_reg_o[`ALUREG_T_I5_TO_OP_B]  	  	= `HIGH;
+			alu_reg_o[`ALUREG_16_S2_I9_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_I5_TO_OP_B]  	= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_SUB_B;			
 			next_state 								= FSM_STAGE3_R3;	
 											
@@ -1277,8 +1347,8 @@ always @(*) begin
 		FSM_STAGE3_R3: begin
 
 			wr_enable_o[`WBF_16_S3_I13]				= `HIGH;
-			alu_reg_o[`ALUREG_S2_R3_TO_OP_A] 		= `HIGH;
-			alu_reg_o[`ALUREG_T_R8_TO_OP_B]  	  	= `HIGH;
+			alu_reg_o[`ALUREG_16_S2_R3_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_R8_TO_OP_B]  	= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_SUB_B;			
 			next_state 								= FSM_STAGE3_I3;	
 											
@@ -1287,8 +1357,8 @@ always @(*) begin
 		FSM_STAGE3_I3: begin
 
 			wr_enable_o[`WBF_16_S3_R3]				= `HIGH;
-			alu_reg_o[`ALUREG_S2_I3_TO_OP_A] 		= `HIGH;
-			alu_reg_o[`ALUREG_T_I8_TO_OP_B]  	  	= `HIGH;
+			alu_reg_o[`ALUREG_16_S2_I3_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_I8_TO_OP_B]  	= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_SUB_B;			
 			next_state 								= FSM_STAGE3_R7;	
 											
@@ -1297,8 +1367,8 @@ always @(*) begin
 		FSM_STAGE3_R7: begin
 
 			wr_enable_o[`WBF_16_S3_I3]				= `HIGH;
-			alu_reg_o[`ALUREG_S2_R3_TO_OP_A] 		= `HIGH;
-			alu_reg_o[`ALUREG_T_R8_TO_OP_B]  	  	= `HIGH;
+			alu_reg_o[`ALUREG_16_S2_R3_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_R8_TO_OP_B]  	= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_SUB_B;			
 			next_state 								= FSM_STAGE3_I7;	
 											
@@ -1307,8 +1377,8 @@ always @(*) begin
 		FSM_STAGE3_I7: begin
 
 			wr_enable_o[`WBF_16_S3_R7]				= `HIGH;
-			alu_reg_o[`ALUREG_S2_I3_TO_OP_A] 		= `HIGH;
-			alu_reg_o[`ALUREG_T_I8_TO_OP_B]  	  	= `HIGH;
+			alu_reg_o[`ALUREG_16_S2_I3_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_I8_TO_OP_B]  	= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_SUB_B;			
 			next_state 								= FSM_STAGE3_R11;	
 											
@@ -1317,9 +1387,9 @@ always @(*) begin
 		FSM_STAGE3_R11: begin
 
 			wr_enable_o[`WBF_16_S3_I7]				= `HIGH;
-			alu_reg_o[`ALUREG_S2_R11_TO_OP_A] 		= `HIGH;
-			alu_reg_o[`ALUREG_T_R11_TO_OP_B]  	  	= `HIGH;
-			alu_mode_o 		  						= `ALUMODE_A_SUB_B;			
+			alu_reg_o[`ALUREG_16_S2_R11_TO_OP_A]    = `HIGH;
+			alu_reg_o[`ALUREG_16_T_R11_TO_OP_B]  	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_ADD_B;			
 			next_state 								= FSM_STAGE3_I11;	
 											
 		end
@@ -1327,9 +1397,9 @@ always @(*) begin
 		FSM_STAGE3_I11: begin
 
 			wr_enable_o[`WBF_16_S3_R11]				= `HIGH;
-			alu_reg_o[`ALUREG_S2_I11_TO_OP_A] 		= `HIGH;
-			alu_reg_o[`ALUREG_T_I11_TO_OP_B]  	  	= `HIGH;
-			alu_mode_o 		  						= `ALUMODE_A_SUB_B;			
+			alu_reg_o[`ALUREG_16_S2_I11_TO_OP_A]    = `HIGH;
+			alu_reg_o[`ALUREG_16_T_I11_TO_OP_B]  	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_ADD_B;			
 			next_state 								= FSM_STAGE3_R15;	
 											
 		end
@@ -1337,8 +1407,8 @@ always @(*) begin
 		FSM_STAGE3_R15: begin
 
 			wr_enable_o[`WBF_16_S3_I11]				= `HIGH;
-			alu_reg_o[`ALUREG_S2_R11_TO_OP_A] 		= `HIGH;
-			alu_reg_o[`ALUREG_T_R11_TO_OP_B]  	  	= `HIGH;
+			alu_reg_o[`ALUREG_16_S2_R11_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_R11_TO_OP_B]  	= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_SUB_B;			
 			next_state 								= FSM_STAGE3_I15;	
 											
@@ -1347,20 +1417,687 @@ always @(*) begin
 		FSM_STAGE3_I15: begin
 
 			wr_enable_o[`WBF_16_S3_R15]				= `HIGH;
-			alu_reg_o[`ALUREG_S2_I11_TO_OP_A] 		= `HIGH;
-			alu_reg_o[`ALUREG_T_I11_TO_OP_B]  	  	= `HIGH;
+			alu_reg_o[`ALUREG_16_S2_I11_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_I11_TO_OP_B]  	= `HIGH;
 			alu_mode_o 		  						= `ALUMODE_A_SUB_B;			
-			next_state 								= FSM_WAIT_END;	
+			next_state 								= FSM_STAGE4_R0;	
 											
 		end
 
+		FSM_STAGE4_R0: begin
+
+			wr_enable_o[`WBF_16_S3_I15]				= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_R0_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_R8_TO_OP_B]		= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_ADD_B;
+			next_state 								= FSM_STAGE4_I0;
+
+		end
+		
+
+		FSM_STAGE4_I0: begin
+
+			wr_enable_o[`WBF_16_X_R0]				= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_I0_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_I8_TO_OP_B]		= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_ADD_B;
+			next_state 								= FSM_STAGE4_R8;
+
+		end
+
+		FSM_STAGE4_R8: begin
+
+			wr_enable_o[`WBF_16_X_I0]				= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_R0_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_R8_TO_OP_B]		= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_SUB_B;
+			next_state 								= FSM_STAGE4_I8;
+
+		end
+		
+
+		FSM_STAGE4_I8: begin
+
+			wr_enable_o[`WBF_16_X_R8]				= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_I0_TO_OP_A]     = `HIGH;
+			alu_reg_o[`ALUREG_16_S3_I8_TO_OP_B]		= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_SUB_B;
+			next_state 								= FSM_STAGE4_R4;
+
+		end
+
+		FSM_STAGE4_R4: begin
+
+			wr_enable_o[`WBF_16_X_I8]				= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_R4_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_I12_TO_OP_B]	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_SUB_B;
+			next_state 								= FSM_STAGE4_I4;
+
+		end
+		
+
+		FSM_STAGE4_I4: begin
+
+			wr_enable_o[`WBF_16_X_R4]				= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_I4_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_R12_TO_OP_B]	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_SUB_B;
+			next_state 								= FSM_STAGE4_R12;
+
+		end
+
+		FSM_STAGE4_R12: begin
+
+			wr_enable_o[`WBF_16_X_I4]				= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_R4_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_I12_TO_OP_B]	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_ADD_B;
+			next_state 								= FSM_STAGE4_I12;
+
+		end
+		
+
+		FSM_STAGE4_I12: begin
+
+			wr_enable_o[`WBF_16_X_R12]				= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_I4_TO_OP_A]     = `HIGH;
+			alu_reg_o[`ALUREG_16_S3_R12_TO_OP_B]	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_ADD_B;
+			next_state 								= FSM_STAGE4_T2_R0;
+
+		end
+
+		FSM_STAGE4_T2_R0: begin
+
+			wr_enable_o[`WBF_16_X_I12]				= `HIGH;
+			alu_reg_o[`ALUREG_W_16_1_REEL_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_R9_TO_OP_B]  	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_MULT_B;
+			next_state 								= FSM_STAGE4_T2_I0;	
+			
+		end
+
+		FSM_STAGE4_T2_I0: begin
+
+			wr_enable_o[`WBF_16_T_R0]				= `HIGH;
+			alu_reg_o[`ALUREG_W_16_1_REEL_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_I9_TO_OP_B]  	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_MULT_B;
+			next_state 								= FSM_STAGE4_T2_R1;	
+											
+		end
+
+		FSM_STAGE4_T2_R1: begin
+
+			wr_enable_o[`WBF_16_T_I0]				= `HIGH;
+			alu_reg_o[`ALUREG_W_16_1_IMAG_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_R9_TO_OP_B]  	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_MULT_B;
+			next_state 								= FSM_STAGE4_T2_I1;	
+			
+		end
+
+		FSM_STAGE4_T2_I1: begin
+
+			wr_enable_o[`WBF_16_T2_I1]				= `HIGH;
+			alu_reg_o[`ALUREG_W_16_1_IMAG_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_I9_TO_OP_B]  	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_MULT_B;
+			next_state 								= FSM_STAGE4_T2_R2;	
+											
+		end
+
+		FSM_STAGE4_T2_R2: begin
+
+			wr_enable_o[`WBF_16_T2_R1]				= `HIGH;
+			alu_reg_o[`ALUREG_16_T_R0_TO_OP_A] 		= `HIGH;
+			alu_reg_o[`ALUREG_16_T_R1_TO_OP_B]  	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_ADD_B;			
+			next_state 								= FSM_STAGE4_T2_I2;	
+											
+		end
+
+		FSM_STAGE4_T2_I2: begin
+
+			wr_enable_o[`WBF_16_T_R2]				= `HIGH;
+			alu_reg_o[`ALUREG_16_T_I0_TO_OP_A] 		= `HIGH;
+			alu_reg_o[`ALUREG_16_T_I1_TO_OP_B]  	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_ADD_B;			
+			next_state 								= FSM_STAGE4_T2_R3;	
+											
+		end
+
+		FSM_STAGE4_T2_R3: begin
+
+			wr_enable_o[`WBF_16_T_I2]				= `HIGH;
+			alu_reg_o[`ALUREG_W_16_2_REEL_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_R10_TO_OP_B]  	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_MULT_B;
+			next_state 								= FSM_STAGE4_T2_I3;	
+			
+		end
+
+		FSM_STAGE4_T2_I3: begin
+
+			wr_enable_o[`WBF_16_T_R3]				= `HIGH;
+			wr_enable_o[`WBF_16_T_I4]				= `HIGH;
+			alu_reg_o[`ALUREG_W_16_2_REEL_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_I10_TO_OP_B]  	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_MULT_B;
+			next_state 								= FSM_STAGE4_T2_R5;	
+											
+		end
+
+		FSM_STAGE4_T2_R5: begin
+
+			wr_enable_o[`WBF_16_T_I3]				= `HIGH;
+			wr_enable_o[`WBF_16_T_R4]				= `HIGH;
+			alu_reg_o[`ALUREG_16_T_R3_TO_OP_A] 		= `HIGH;
+			alu_reg_o[`ALUREG_16_T_R4_TO_OP_B]  	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_ADD_B;			
+			next_state 								= FSM_STAGE4_T2_I5;	
+											
+		end
+
+		FSM_STAGE4_T2_I5: begin
+
+			wr_enable_o[`WBF_16_T_R5]				= `HIGH;
+			alu_reg_o[`ALUREG_16_T_I3_TO_OP_A] 		= `HIGH;
+			alu_reg_o[`ALUREG_16_T_I4_TO_OP_B]  	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_ADD_B;			
+			next_state 								= FSM_STAGE4_T2_R6;	
+											
+		end
+
+		FSM_STAGE4_T2_R6: begin
+
+			wr_enable_o[`WBF_16_T_I5]				= `HIGH;
+			alu_reg_o[`ALUREG_W_16_6_REEL_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_R14_TO_OP_B]  	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_MULT_B;
+			next_state 								= FSM_STAGE4_T2_I6;	
+			
+		end
+
+		FSM_STAGE4_T2_I6: begin
+
+			wr_enable_o[`WBF_16_T_R6]				= `HIGH;
+			wr_enable_o[`WBF_16_T_I7]				= `HIGH;
+			alu_reg_o[`ALUREG_W_16_6_REEL_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_I14_TO_OP_B]  	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_MULT_B;
+			next_state 								= FSM_STAGE4_T2_R8;	
+											
+		end
+
+		FSM_STAGE4_T2_R8: begin
+
+			wr_enable_o[`WBF_16_T_I6]				= `HIGH;
+			wr_enable_o[`WBF_16_T_R7]				= `HIGH;
+			alu_reg_o[`ALUREG_16_T_R6_TO_OP_A] 		= `HIGH;
+			alu_reg_o[`ALUREG_16_T_R7_TO_OP_B]  	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_ADD_B;			
+			next_state 								= FSM_STAGE4_T2_I8;	
+											
+		end
+
+		FSM_STAGE4_T2_I8: begin
+
+			wr_enable_o[`WBF_16_T_R8]				= `HIGH;
+			alu_reg_o[`ALUREG_16_T_I6_TO_OP_A] 		= `HIGH;
+			alu_reg_o[`ALUREG_16_T_I7_TO_OP_B]  	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_ADD_B;			
+			next_state 								= FSM_STAGE4_T2_R9;	
+											
+		end
+
+		FSM_STAGE4_T2_R9: begin
+
+			wr_enable_o[`WBF_16_T_I8]				= `HIGH;
+			alu_reg_o[`ALUREG_W_16_3_REEL_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_R11_TO_OP_B]  	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_MULT_B;
+			next_state 								= FSM_STAGE4_T2_I9;	
+			
+		end
+
+		FSM_STAGE4_T2_I9: begin
+
+			wr_enable_o[`WBF_16_T_R9]				= `HIGH;
+			alu_reg_o[`ALUREG_W_16_3_REEL_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_I11_TO_OP_B]  	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_MULT_B;
+			next_state 								= FSM_STAGE4_T2_R10;	
+											
+		end
+
+		FSM_STAGE4_T2_R10: begin
+
+			wr_enable_o[`WBF_16_T_I9]				= `HIGH;
+			alu_reg_o[`ALUREG_W_16_3_IMAG_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_R11_TO_OP_B]  	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_MULT_B;
+			next_state 								= FSM_STAGE4_T2_I10;	
+			
+		end
+
+		FSM_STAGE4_T2_I10: begin
+
+			wr_enable_o[`WBF_16_T_I10]				= `HIGH;
+			alu_reg_o[`ALUREG_W_16_3_IMAG_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_I11_TO_OP_B]  	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_MULT_B;
+			next_state 								= FSM_STAGE4_T2_R11;	
+											
+		end
+
+		FSM_STAGE4_T2_R11: begin
+
+			wr_enable_o[`WBF_16_T_R10]				= `HIGH;
+			alu_reg_o[`ALUREG_16_T_R9_TO_OP_A] 		= `HIGH;
+			alu_reg_o[`ALUREG_16_T_R10_TO_OP_B]  	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_ADD_B;			
+			next_state 								= FSM_STAGE4_T2_I11;	
+											
+		end
+
+		FSM_STAGE4_T2_I11: begin
+
+			wr_enable_o[`WBF_16_T_R11]				= `HIGH;
+			alu_reg_o[`ALUREG_16_T_I9_TO_OP_A] 		= `HIGH;
+			alu_reg_o[`ALUREG_16_T_I10_TO_OP_B]  	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_ADD_B;			
+			next_state 								= FSM_STAGE4_T2_R12;	
+											
+		end
+
+
+		FSM_STAGE4_T2_R12: begin
+
+			wr_enable_o[`WBF_16_T_I11]				= `HIGH;
+			alu_reg_o[`ALUREG_W_16_5_REEL_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_R13_TO_OP_B]  	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_MULT_B;
+			next_state 								= FSM_STAGE4_T2_I12;	
+			
+		end
+
+		FSM_STAGE4_T2_I12: begin
+
+			wr_enable_o[`WBF_16_T_R12]				= `HIGH;
+			alu_reg_o[`ALUREG_W_16_5_REEL_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_I13_TO_OP_B]  	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_MULT_B;
+			next_state 								= FSM_STAGE4_T2_R13;	
+											
+		end
+
+		FSM_STAGE4_T2_R13: begin
+
+			wr_enable_o[`WBF_16_T_I12]				= `HIGH;
+			alu_reg_o[`ALUREG_W_16_5_IMAG_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_R13_TO_OP_B]  	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_MULT_B;
+			next_state 								= FSM_STAGE4_T2_I13;	
+			
+		end
+
+		FSM_STAGE4_T2_I13: begin
+
+			wr_enable_o[`WBF_16_T_I13]				= `HIGH;
+			alu_reg_o[`ALUREG_W_16_5_IMAG_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_I13_TO_OP_B]  	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_MULT_B;
+			next_state 								= FSM_STAGE4_T2_R14;	
+											
+		end
+
+		FSM_STAGE4_T2_R14: begin
+
+			wr_enable_o[`WBF_16_T_R13]				= `HIGH;
+			alu_reg_o[`ALUREG_16_T_R12_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_R13_TO_OP_B]  	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_ADD_B;			
+			next_state 								= FSM_STAGE4_T2_I14;	
+											
+		end
+
+		FSM_STAGE4_T2_I14: begin
+
+			wr_enable_o[`WBF_16_T_R14]				= `HIGH;
+			alu_reg_o[`ALUREG_16_T_I12_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_I13_TO_OP_B]  	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_ADD_B;			
+			next_state 								= FSM_STAGE4_T2_R15;	
+											
+		end
+
+		FSM_STAGE4_T2_R15: begin
+
+			wr_enable_o[`WBF_16_T_I14]				= `HIGH;
+			alu_reg_o[`ALUREG_W_16_7_REEL_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_R15_TO_OP_B]  	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_MULT_B;
+			next_state 								= FSM_STAGE4_T2_I15;	
+			
+		end
+
+		FSM_STAGE4_T2_I15: begin
+
+			wr_enable_o[`WBF_16_T_R15]				= `HIGH;
+			alu_reg_o[`ALUREG_W_16_7_REEL_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_I15_TO_OP_B]  	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_MULT_B;
+			next_state 								= FSM_STAGE4_T2_R16;	
+											
+		end
+
+		FSM_STAGE4_T2_R16: begin
+
+			wr_enable_o[`WBF_16_T_I15]				= `HIGH;
+			alu_reg_o[`ALUREG_W_16_7_IMAG_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_R15_TO_OP_B]  	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_MULT_B;
+			next_state 								= FSM_STAGE4_T2_I16;	
+			
+		end
+
+		FSM_STAGE4_T2_I16: begin
+
+			wr_enable_o[`WBF_16_T_I16]				= `HIGH;
+			alu_reg_o[`ALUREG_W_16_7_IMAG_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_I15_TO_OP_B]  	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_MULT_B;
+			next_state 								= FSM_STAGE4_T2_R17;	
+											
+		end
+
+		FSM_STAGE4_T2_R17: begin
+
+			wr_enable_o[`WBF_16_T_R16]				= `HIGH;
+			alu_reg_o[`ALUREG_16_T_R15_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_R16_TO_OP_B]  	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_ADD_B;			
+			next_state 								= FSM_STAGE4_T2_I17;	
+											
+		end
+
+		FSM_STAGE4_T2_I17: begin
+
+			wr_enable_o[`WBF_16_T_R17]				= `HIGH;
+			alu_reg_o[`ALUREG_16_T_I15_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_I16_TO_OP_B]  	= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_ADD_B;			
+			next_state 								= FSM_STAGE4_R1;	
+											
+		end
+
+		FSM_STAGE4_R1: begin
+
+			wr_enable_o[`WBF_16_T_I17]				= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_R1_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_R2_TO_OP_B]		= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_ADD_B;
+			next_state 								= FSM_STAGE4_I1;
+
+		end
+		
+
+		FSM_STAGE4_I1: begin
+
+			wr_enable_o[`WBF_16_X_R1]				= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_I1_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_I2_TO_OP_B]		= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_ADD_B;
+			next_state 								= FSM_STAGE4_R9;
+
+		end
+
+		FSM_STAGE4_R9: begin
+
+			wr_enable_o[`WBF_16_X_I1]				= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_R1_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_R2_TO_OP_B]		= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_SUB_B;
+			next_state 								= FSM_STAGE4_I9;
+
+		end
+		
+
+		FSM_STAGE4_I9: begin
+
+			wr_enable_o[`WBF_16_X_R9]				= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_I1_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_I2_TO_OP_B]		= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_SUB_B;
+			next_state 								= FSM_STAGE4_R2;
+
+		end
+
+		FSM_STAGE4_R2: begin
+
+			wr_enable_o[`WBF_16_X_I9]				= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_R1_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_R5_TO_OP_B]		= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_ADD_B;
+			next_state 								= FSM_STAGE4_I2;
+
+		end
+		
+
+		FSM_STAGE4_I2: begin
+
+			wr_enable_o[`WBF_16_X_R2]				= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_I1_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_I5_TO_OP_B]		= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_ADD_B;
+			next_state 								= FSM_STAGE4_R10;
+
+		end
+
+		FSM_STAGE4_R10: begin
+
+			wr_enable_o[`WBF_16_X_I2]				= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_R1_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_R5_TO_OP_B]		= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_SUB_B;
+			next_state 								= FSM_STAGE4_I10;
+
+		end
+		
+
+		FSM_STAGE4_I10: begin
+
+			wr_enable_o[`WBF_16_X_R10]				= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_I1_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_I5_TO_OP_B]		= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_SUB_B;
+			next_state 								= FSM_STAGE4_R3;
+
+		end
+
+		FSM_STAGE4_R3: begin
+
+			wr_enable_o[`WBF_16_X_I10]				= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_R3_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_R8_TO_OP_B]		= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_ADD_B;
+			next_state 								= FSM_STAGE4_I3;
+
+		end
+		
+
+		FSM_STAGE4_I3: begin
+
+			wr_enable_o[`WBF_16_X_R3]				= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_I3_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_I8_TO_OP_B]		= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_ADD_B;
+			next_state 								= FSM_STAGE4_R11;
+
+		end
+
+		FSM_STAGE4_R11: begin
+
+			wr_enable_o[`WBF_16_X_I3]				= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_R3_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_R8_TO_OP_B]		= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_SUB_B;
+			next_state 								= FSM_STAGE4_I11;
+
+		end
+		
+
+		FSM_STAGE4_I11: begin
+
+			wr_enable_o[`WBF_16_X_R11]				= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_I3_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_I8_TO_OP_B]		= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_SUB_B;
+			next_state 								= FSM_STAGE4_R5;
+
+		end
+
+		FSM_STAGE4_R5: begin
+
+			wr_enable_o[`WBF_16_X_I11]				= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_R5_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_R14_TO_OP_B]		= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_ADD_B;
+			next_state 								= FSM_STAGE4_I5;
+
+		end
+		
+
+		FSM_STAGE4_I5: begin
+
+			wr_enable_o[`WBF_16_X_R5]				= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_I5_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_I14_TO_OP_B]		= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_ADD_B;
+			next_state 								= FSM_STAGE4_R13;
+
+		end
+
+		FSM_STAGE4_R13: begin
+
+			wr_enable_o[`WBF_16_X_I5]				= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_R3_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_R14_TO_OP_B]		= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_SUB_B;
+			next_state 								= FSM_STAGE4_I13;
+
+		end
+		
+
+		FSM_STAGE4_I13: begin
+
+			wr_enable_o[`WBF_16_X_R13]				= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_I3_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_I14_TO_OP_B]		= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_SUB_B;
+			next_state 								= FSM_STAGE4_R6;
+
+		end
+
+		FSM_STAGE4_R6: begin
+
+			wr_enable_o[`WBF_16_X_I13]				= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_R6_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_R8_TO_OP_B]		= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_ADD_B;
+			next_state 								= FSM_STAGE4_I6;
+
+		end
+		
+
+		FSM_STAGE4_I6: begin
+
+			wr_enable_o[`WBF_16_X_R6]				= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_I6_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_I8_TO_OP_B]		= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_ADD_B;
+			next_state 								= FSM_STAGE4_R14;
+
+		end
+
+		FSM_STAGE4_R14: begin
+
+			wr_enable_o[`WBF_16_X_I6]				= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_R6_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_R8_TO_OP_B]		= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_SUB_B;
+			next_state 								= FSM_STAGE4_I14;
+
+		end
+		
+
+		FSM_STAGE4_I14: begin
+
+			wr_enable_o[`WBF_16_X_R14]				= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_I6_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_I8_TO_OP_B]		= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_SUB_B;
+			next_state 								= FSM_STAGE4_R7;
+
+		end
+
+
+		FSM_STAGE4_R7: begin
+
+			wr_enable_o[`WBF_16_X_I14]				= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_R7_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_R17_TO_OP_B]		= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_ADD_B;
+			next_state 								= FSM_STAGE4_I7;
+
+		end
+		
+
+		FSM_STAGE4_I7: begin
+
+			wr_enable_o[`WBF_16_X_R7]				= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_I7_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_I17_TO_OP_B]		= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_ADD_B;
+			next_state 								= FSM_STAGE4_R15;
+
+		end
+
+		FSM_STAGE4_R15: begin
+
+			wr_enable_o[`WBF_16_X_I7]				= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_R7_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_R17_TO_OP_B]		= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_SUB_B;
+			next_state 								= FSM_STAGE4_I15;
+
+		end
+		
+
+		FSM_STAGE4_I15: begin
+
+			wr_enable_o[`WBF_16_X_R15]				= `HIGH;
+			alu_reg_o[`ALUREG_16_S3_I7_TO_OP_A] 	= `HIGH;
+			alu_reg_o[`ALUREG_16_T_I17_TO_OP_B]		= `HIGH;
+			alu_mode_o 		  						= `ALUMODE_A_SUB_B;
+			next_state 								= FSM_WAIT_END;
+
+		end
+
+
+
 		FSM_WAIT_END: begin
 
-			wr_enable_o[`WBF_X_I7]				    = `HIGH;
+			wr_enable_o[`WBF_16_X_I15]				= `HIGH;
+
+			
 			next_state 								= FSM_END;	
 											
 		end
 
+		
 		FSM_END: begin
 
 
@@ -1369,7 +2106,7 @@ always @(*) begin
 											
 		end
 		
-
+		
 	endcase 
 
 end
