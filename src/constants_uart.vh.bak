@@ -1,0 +1,203 @@
+`ifndef _constants_uartvh_
+`define _constants_uart_vh_
+
+// FSM States for UART Low Level Driver
+`define FSM_IDLE 		 0
+`define FSM_B0   		 1
+`define FSM_B1   		 2
+`define FSM_B2   		 3
+`define FSM_B3   		 4
+`define FSM_B4   		 5
+`define FSM_B5   		 6
+`define FSM_B6   		 7
+`define FSM_B7   		 8
+`define FSM_STOP 		 9
+`define FSM_W0   		 10
+`define FSM_W1   		 11
+`define FSM_W2   		 12
+`define FSM_W3   		 13
+`define FSM_W4   		 14
+`define FSM_W5   		 15
+`define FSM_W6   		 16
+`define FSM_W7   		 17
+`define FSM_WI   		 18
+`define FSM_STOP2 		 19
+
+
+
+
+
+/********* UART CONTROLLER *********/
+`define START_BYTE      8'hEE
+`define STOP_BYTE       8'hDD
+
+
+`define SELECT_FFT8								 2'd1
+`define SELECT_FFT16							 2'd2
+`define SELECT_FFT32							 2'd3
+
+
+
+
+// FSM States for UART Controller
+`define FSM_IDLE 		          0
+`define FSM_RX_FFT_SELECT         1
+`define FSM_RX_SAMPLE_R_INT       2
+`define FSM_RX_SAMPLE_R_FRAC      3
+`define FSM_RX_SAMPLE_I_INT       4
+`define FSM_RX_SAMPLE_I_FRAC      5
+`define FSM_RX_STOP               6
+`define FSM_TX_START              7
+`define FSM_TX_COEFF_R_INT        8
+`define FSM_TX_COEFF_R_FRAC       9
+`define FSM_TX_COEFF_I_INT        10
+`define FSM_TX_COEFF_I_FRAC       11
+
+
+
+
+`define FSM_SAMPLE_R0_FRAC        3
+`define FSM_SAMPLE_I0_INT         4
+`define FSM_SAMPLE_I0_FRAC        5
+`define FSM_SAMPLE_R1_INT         6
+`define FSM_SAMPLE_R1_FRAC        7
+`define FSM_SAMPLE_I1_INT         8
+`define FSM_SAMPLE_I1_FRAC        9 
+`define FSM_SAMPLE_R2_INT         10
+`define FSM_SAMPLE_R2_FRAC        11
+`define FSM_SAMPLE_I2_INT         12
+`define FSM_SAMPLE_I2_FRAC        13
+`define FSM_SAMPLE_R3_INT         14
+`define FSM_SAMPLE_R3_FRAC        15
+`define FSM_SAMPLE_I3_INT         16
+`define FSM_SAMPLE_I3_FRAC        17
+`define FSM_SAMPLE_R4_INT         18
+`define FSM_SAMPLE_R4_FRAC        19
+`define FSM_SAMPLE_I4_INT         20
+`define FSM_SAMPLE_I4_FRAC        21
+`define FSM_SAMPLE_R5_INT         22
+`define FSM_SAMPLE_R5_FRAC        23
+`define FSM_SAMPLE_I5_INT         24 
+`define FSM_SAMPLE_I5_FRAC        25
+`define FSM_SAMPLE_R6_INT         26
+`define FSM_SAMPLE_R6_FRAC        27
+`define FSM_SAMPLE_I6_INT         28
+`define FSM_SAMPLE_I6_FRAC        29
+`define FSM_SAMPLE_R7_INT         30
+`define FSM_SAMPLE_R7_FRAC        31
+`define FSM_SAMPLE_I7_INT         32
+`define FSM_SAMPLE_I7_FRAC        33
+`define FSM_SAMPLE_R8_INT         34
+`define FSM_SAMPLE_R8_FRAC        35
+`define FSM_SAMPLE_I8_INT         36
+`define FSM_SAMPLE_I8_FRAC        37
+`define FSM_SAMPLE_R9_INT         38
+`define FSM_SAMPLE_R9_FRAC        39
+`define FSM_SAMPLE_I9_INT         40
+`define FSM_SAMPLE_I9_FRAC        41
+`define FSM_SAMPLE_R10_INT        42
+`define FSM_SAMPLE_R10_FRAC       43
+`define FSM_SAMPLE_I10_INT        44
+`define FSM_SAMPLE_I10_FRAC       45
+`define FSM_SAMPLE_R11_INT        46
+`define FSM_SAMPLE_R11_FRAC       47
+`define FSM_SAMPLE_I11_INT        48
+`define FSM_SAMPLE_I11_FRAC       49
+`define FSM_SAMPLE_R12_INT        50
+`define FSM_SAMPLE_R12_FRAC       51
+`define FSM_SAMPLE_I12_INT        52
+`define FSM_SAMPLE_I12_FRAC       53
+`define FSM_SAMPLE_R13_INT        54
+`define FSM_SAMPLE_R13_FRAC       55
+`define FSM_SAMPLE_I13_INT        56
+`define FSM_SAMPLE_I13_FRAC       57
+`define FSM_SAMPLE_R14_INT        58
+`define FSM_SAMPLE_R14_FRAC       59
+`define FSM_SAMPLE_I14_INT        60
+`define FSM_SAMPLE_I14_FRAC       61
+`define FSM_SAMPLE_R15_INT        62
+`define FSM_SAMPLE_R15_FRAC       63
+`define FSM_SAMPLE_I15_INT        64
+`define FSM_SAMPLE_I15_FRAC       65
+`define FSM_SAMPLE_R16_INT        66
+`define FSM_SAMPLE_R16_FRAC       67
+`define FSM_SAMPLE_I16_INT        68
+`define FSM_SAMPLE_I16_FRAC       69
+`define FSM_SAMPLE_R17_INT        70
+`define FSM_SAMPLE_R17_FRAC       71
+`define FSM_SAMPLE_I17_INT        72
+`define FSM_SAMPLE_I17_FRAC       73
+`define FSM_SAMPLE_R18_INT        74
+`define FSM_SAMPLE_R18_FRAC       75
+`define FSM_SAMPLE_I18_INT        76
+`define FSM_SAMPLE_I18_FRAC       77
+`define FSM_SAMPLE_R19_INT        78
+`define FSM_SAMPLE_R19_FRAC       79
+`define FSM_SAMPLE_I19_INT        80
+`define FSM_SAMPLE_I19_FRAC       81
+`define FSM_SAMPLE_R20_INT        82
+`define FSM_SAMPLE_R20_FRAC       83
+`define FSM_SAMPLE_I20_INT        84
+`define FSM_SAMPLE_I20_FRAC       85
+`define FSM_SAMPLE_R21_INT        86
+`define FSM_SAMPLE_R21_FRAC       87
+`define FSM_SAMPLE_I21_INT        88
+`define FSM_SAMPLE_I21_FRAC       89
+`define FSM_SAMPLE_R22_INT        90
+`define FSM_SAMPLE_R22_FRAC       91
+`define FSM_SAMPLE_I22_INT        92
+`define FSM_SAMPLE_I22_FRAC       93
+`define FSM_SAMPLE_R23_INT        94
+`define FSM_SAMPLE_R23_FRAC       95
+`define FSM_SAMPLE_I23_INT        96
+`define FSM_SAMPLE_I23_FRAC       97
+`define FSM_SAMPLE_R24_INT        98
+`define FSM_SAMPLE_R24_FRAC       99
+`define FSM_SAMPLE_I24_INT        100
+`define FSM_SAMPLE_I24_FRAC       101
+`define FSM_SAMPLE_R25_INT        102
+`define FSM_SAMPLE_R25_FRAC       103
+`define FSM_SAMPLE_I25_INT        104
+`define FSM_SAMPLE_I25_FRAC       105
+`define FSM_SAMPLE_R25_INT        2
+`define FSM_SAMPLE_R25_FRAC       3
+`define FSM_SAMPLE_I25_INT        4
+`define FSM_SAMPLE_I25_FRAC       5
+`define FSM_SAMPLE_R26_INT        2
+`define FSM_SAMPLE_R26_FRAC       3
+`define FSM_SAMPLE_I26_INT        4
+`define FSM_SAMPLE_I26_FRAC       5
+`define FSM_SAMPLE_R27_INT        2
+`define FSM_SAMPLE_R27_FRAC       3
+`define FSM_SAMPLE_I27_INT        4
+`define FSM_SAMPLE_I27_FRAC       5
+`define FSM_SAMPLE_R28_INT        2
+`define FSM_SAMPLE_R28_FRAC       3
+`define FSM_SAMPLE_I28_INT        4
+`define FSM_SAMPLE_I28_FRAC       5
+`define FSM_SAMPLE_R29_INT        2
+`define FSM_SAMPLE_R29_FRAC       3
+`define FSM_SAMPLE_I29_INT        4
+`define FSM_SAMPLE_I29_FRAC       5
+`define FSM_SAMPLE_R30_INT        2
+`define FSM_SAMPLE_R30_FRAC       3
+`define FSM_SAMPLE_I31_INT        4
+`define FSM_SAMPLE_I31_FRAC       5
+
+
+
+
+
+`define LOW_1      = 1'b0;
+`define HIGH_1     = 1'b1;
+
+
+
+
+`endif
+
+
+
+
+
+

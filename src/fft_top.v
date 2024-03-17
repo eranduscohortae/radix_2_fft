@@ -135,8 +135,8 @@ module fft_top(
 					output [15:0] X_31_R_o,
 					output [15:0] X_31_I_o,
 
-					output  valid_o,
-					output  busy_o
+					output  valid_o
+
 
 	);
 
@@ -144,19 +144,24 @@ module fft_top(
 
 
 
-wire [59:0] fft8_wr_enable_c;
-wire [63:0] fft8_alu_reg_c;
-wire [4:0]  fft8_alu_mode_c;
+wire [59:0]  fft8_wr_enable_c;
+wire [63:0]  fft8_alu_reg_c;
+wire [4:0]   fft8_alu_mode_c;
 
 wire [165:0] fft16_wr_enable_c;
 wire [175:0] fft16_alu_reg_c;
-wire [4:0]  fft16_alu_mode_c;
+wire [4:0]   fft16_alu_mode_c;
+
+wire [256:0] fft32_wr_enable_c;
+wire [256:0] fft32_alu_reg_c;
+wire [4:0]   fft32_alu_mode_c;
 
 
 
 wire start_fft8;
 wire start_fft16;
 wire start_fft32;
+
 wire valid_fft8;
 wire valid_fft16;
 wire valid_fft32;
@@ -451,11 +456,172 @@ wire [15:0] fft32_X_31_I;
  						 );
 
 
+ fft32_controller CTRL32   (
+
+							.clk(clk),
+							.rst(rst),
+							.start_i(start_fft32),
+
+							.alu_reg_o(fft32_alu_reg_c),
+							.alu_mode_o(fft32_alu_mode_c),
+							.wr_enable_o(fft32_wr_enable_c),
+							.busy_o(busy_o),
+							.valid_o(valid_fft32)
+						 );
+
+
+ fft32_datapath DATAPATH32 (
+ 	
+ 							.clk(clk),
+							.rst(rst),
+							.start_i(start_fft32),
+
+							.x_0_R_i(x_0_R_i),
+							.x_0_I_i(x_0_I_i),
+							.x_1_R_i(x_1_R_i),
+							.x_1_I_i(x_1_I_i),
+							.x_2_R_i(x_2_R_i),
+							.x_2_I_i(x_2_I_i),
+							.x_3_R_i(x_3_R_i),
+							.x_3_I_i(x_3_I_i),
+							.x_4_R_i(x_4_R_i),
+							.x_4_I_i(x_4_I_i),
+							.x_5_R_i(x_5_R_i),
+							.x_5_I_i(x_5_I_i),
+							.x_6_R_i(x_6_R_i),
+							.x_6_I_i(x_6_I_i),
+							.x_7_R_i(x_7_R_i),
+							.x_7_I_i(x_7_I_i),
+							.x_8_R_i(x_8_R_i),
+							.x_8_I_i(x_8_I_i),
+							.x_9_R_i(x_9_R_i),
+							.x_9_I_i(x_9_I_i),
+							.x_10_R_i(x_10_R_i),
+							.x_10_I_i(x_10_I_i),
+							.x_11_R_i(x_11_R_i),
+							.x_11_I_i(x_11_I_i),
+							.x_12_R_i(x_12_R_i),
+							.x_12_I_i(x_12_I_i),
+							.x_13_R_i(x_13_R_i),
+							.x_13_I_i(x_13_I_i),
+							.x_14_R_i(x_14_R_i),
+							.x_14_I_i(x_14_I_i),
+							.x_15_R_i(x_15_R_i),
+							.x_15_I_i(x_15_I_i),
+							.x_16_R_i(x_16_R_i),
+							.x_16_I_i(x_16_I_i),
+							.x_17_R_i(x_17_R_i),
+							.x_17_I_i(x_17_I_i),
+							.x_18_R_i(x_18_R_i),
+							.x_18_I_i(x_18_I_i),
+							.x_19_R_i(x_19_R_i),
+							.x_19_I_i(x_19_I_i),
+							.x_20_R_i(x_20_R_i),
+							.x_20_I_i(x_20_I_i),
+							.x_21_R_i(x_21_R_i),
+							.x_21_I_i(x_21_I_i),
+							.x_22_R_i(x_22_R_i),
+							.x_22_I_i(x_22_I_i),
+							.x_23_R_i(x_23_R_i),
+							.x_23_I_i(x_23_I_i),
+							.x_24_R_i(x_24_R_i),
+							.x_24_I_i(x_24_I_i),
+							.x_25_R_i(x_25_R_i),
+							.x_25_I_i(x_25_I_i),
+							.x_26_R_i(x_26_R_i),
+							.x_26_I_i(x_26_I_i),
+							.x_27_R_i(x_27_R_i),
+							.x_27_I_i(x_27_I_i),
+							.x_28_R_i(x_28_R_i),
+							.x_28_I_i(x_28_I_i),
+							.x_29_R_i(x_29_R_i),
+							.x_29_I_i(x_29_I_i),
+							.x_30_R_i(x_30_R_i),
+							.x_30_I_i(x_30_I_i),
+							.x_31_R_i(x_31_R_i),
+							.x_31_I_i(x_31_I_i),
+
+							.alu_reg_i(fft32_alu_reg_c),
+							.alu_mode_i(fft32_alu_mode_c),
+							.wr_enable_i(fft32_wr_enable_c),
+
+
+							.X_0_R_o(fft32_X_0_R),
+							.X_0_I_o(fft32_X_0_I),
+							.X_1_R_o(fft32_X_1_R),
+							.X_1_I_o(fft32_X_1_I),
+							.X_2_R_o(fft32_X_2_R),
+							.X_2_I_o(fft32_X_2_I),
+							.X_3_R_o(fft32_X_3_R),
+							.X_3_I_o(fft32_X_3_I),
+							.X_4_R_o(fft32_X_4_R),
+							.X_4_I_o(fft32_X_4_I),
+							.X_5_R_o(fft32_X_5_R),
+							.X_5_I_o(fft32_X_5_I),
+							.X_6_R_o(fft32_X_6_R),
+							.X_6_I_o(fft32_X_6_I),
+							.X_7_R_o(fft32_X_7_R),
+							.X_7_I_o(fft32_X_7_I),
+							.X_8_R_o(fft32_X_8_R),
+							.X_8_I_o(fft32_X_8_I),
+							.X_9_R_o(fft32_X_9_R),
+							.X_9_I_o(fft32_X_9_I),
+							.X_10_R_o(fft32_X_10_R),
+							.X_10_I_o(fft32_X_10_I),
+							.X_11_R_o(fft32_X_11_R),
+							.X_11_I_o(fft32_X_11_I),
+							.X_12_R_o(fft32_X_12_R),
+							.X_12_I_o(fft32_X_12_I),
+							.X_13_R_o(fft32_X_13_R),
+							.X_13_I_o(fft32_X_13_I),
+							.X_14_R_o(fft32_X_14_R),
+							.X_14_I_o(fft32_X_14_I),
+							.X_15_R_o(fft32_X_15_R),
+							.X_15_I_o(fft32_X_15_I),
+							.X_16_R_o(fft32_X_16_R),
+							.X_16_I_o(fft32_X_16_I),
+							.X_17_R_o(fft32_X_17_R),
+							.X_17_I_o(fft32_X_17_I),
+							.X_18_R_o(fft32_X_18_R),
+							.X_18_I_o(fft32_X_18_I),
+							.X_19_R_o(fft32_X_19_R),
+							.X_19_I_o(fft32_X_19_I),
+							.X_20_R_o(fft32_X_20_R),
+							.X_20_I_o(fft32_X_20_I),
+							.X_21_R_o(fft32_X_21_R),
+							.X_21_I_o(fft32_X_21_I),
+							.X_22_R_o(fft32_X_22_R),
+							.X_22_I_o(fft32_X_22_I),
+							.X_23_R_o(fft32_X_23_R),
+							.X_23_I_o(fft32_X_23_I),
+							.X_24_R_o(fft32_X_24_R),
+							.X_24_I_o(fft32_X_24_I),
+							.X_25_R_o(fft32_X_25_R),
+							.X_25_I_o(fft32_X_25_I),
+							.X_26_R_o(fft32_X_26_R),
+							.X_26_I_o(fft32_X_26_I),
+							.X_27_R_o(fft32_X_27_R),
+							.X_27_I_o(fft32_X_27_I),
+							.X_28_R_o(fft32_X_28_R),
+							.X_28_I_o(fft32_X_28_I),
+							.X_29_R_o(fft32_X_29_R),
+							.X_29_I_o(fft32_X_29_I),
+							.X_30_R_o(fft32_X_30_R),
+							.X_30_I_o(fft32_X_30_I),
+							.X_31_R_o(fft32_X_31_R),
+							.X_31_I_o(fft32_X_31_I)
+
+ 						 );
+
+
+
+
 
  fft_mux MUX 			 (
 
  							.valid_fft8(valid_fft8),
 							.valid_fft16(valid_fft16),
+							.valid_fft32(valid_fft32),
 
 
  							.fft8_X_0_R_i(fft8_X_0_R),

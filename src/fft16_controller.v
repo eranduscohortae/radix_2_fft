@@ -1,5 +1,5 @@
+`include "constants_fft.vh"
 
-`include "constants.vh"
 
 module fft16_controller(
 
@@ -2091,8 +2091,6 @@ always @(*) begin
 		FSM_WAIT_END: begin
 
 			wr_enable_o[`WBF_16_X_I15]				= `HIGH;
-
-			
 			next_state 								= FSM_END;	
 											
 		end

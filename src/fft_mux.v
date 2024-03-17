@@ -118,6 +118,7 @@ module fft_mux(
 
 				input valid_fft8,
 				input valid_fft16,
+				input valid_fft32,
 
 				output [15:0] X_0_R_o,
 				output [15:0] X_0_I_o,
@@ -194,39 +195,39 @@ module fft_mux(
 
 // mux3 X_R0(.fft_select_i(fft_select_i), .in_0_i(),in_1_i(), in_2_i(), .out(X_0_R_o));
 
-assign X_0_R_o   =   fft8_X_0_R_i   | fft16_X_0_R_i;// | fft32_X_0_R_i;
-assign X_0_I_o   =   fft8_X_0_I_i   | fft16_X_0_I_i;//| fft32_X_0_I_i;
-assign X_1_R_o   =   fft8_X_1_R_i   | fft16_X_1_R_i;// | fft32_X_1_R_i;
-assign X_1_I_o   =   fft8_X_1_I_i   | fft16_X_1_I_i;// | fft32_X_1_I_i;
-assign X_2_R_o   =   fft8_X_2_R_i   | fft16_X_2_R_i;// | fft32_X_2_R_i;
-assign X_2_I_o   =   fft8_X_2_I_i   | fft16_X_2_I_i;// | fft32_X_2_I_i;
-assign X_3_R_o   =   fft8_X_3_R_i   | fft16_X_3_R_i;// | fft32_X_3_R_i;
-assign X_3_I_o   =   fft8_X_3_I_i   | fft16_X_3_I_i;// | fft32_X_3_I_i;
-assign X_4_R_o   =   fft8_X_4_R_i   | fft16_X_4_R_i;// | fft32_X_4_R_i;
-assign X_4_I_o   =   fft8_X_4_I_i   | fft16_X_4_I_i;// | fft32_X_4_I_i;
-assign X_5_R_o   =   fft8_X_5_R_i   | fft16_X_5_R_i;// | fft32_X_5_R_i;
-assign X_5_I_o   =   fft8_X_5_I_i   | fft16_X_5_I_i;// | fft32_X_5_I_i;
-assign X_6_R_o   =   fft8_X_6_R_i   | fft16_X_6_R_i;// | fft32_X_6_R_i;
-assign X_6_I_o   =   fft8_X_6_I_i   | fft16_X_6_I_i;// | fft32_X_6_I_i;
-assign X_7_R_o   =   fft8_X_7_R_i   | fft16_X_7_R_i;// | fft32_X_7_R_i;
-assign X_7_I_o   =   fft8_X_7_I_i   | fft16_X_7_I_i;// | fft32_X_7_I_i;
+assign X_0_R_o   =   fft8_X_0_R_i   | fft16_X_0_R_i | fft32_X_0_R_i;
+assign X_0_I_o   =   fft8_X_0_I_i   | fft16_X_0_I_i | fft32_X_0_I_i;
+assign X_1_R_o   =   fft8_X_1_R_i   | fft16_X_1_R_i | fft32_X_1_R_i;
+assign X_1_I_o   =   fft8_X_1_I_i   | fft16_X_1_I_i | fft32_X_1_I_i;
+assign X_2_R_o   =   fft8_X_2_R_i   | fft16_X_2_R_i | fft32_X_2_R_i;
+assign X_2_I_o   =   fft8_X_2_I_i   | fft16_X_2_I_i | fft32_X_2_I_i;
+assign X_3_R_o   =   fft8_X_3_R_i   | fft16_X_3_R_i | fft32_X_3_R_i;
+assign X_3_I_o   =   fft8_X_3_I_i   | fft16_X_3_I_i | fft32_X_3_I_i;
+assign X_4_R_o   =   fft8_X_4_R_i   | fft16_X_4_R_i | fft32_X_4_R_i;
+assign X_4_I_o   =   fft8_X_4_I_i   | fft16_X_4_I_i | fft32_X_4_I_i;
+assign X_5_R_o   =   fft8_X_5_R_i   | fft16_X_5_R_i | fft32_X_5_R_i;
+assign X_5_I_o   =   fft8_X_5_I_i   | fft16_X_5_I_i | fft32_X_5_I_i;
+assign X_6_R_o   =   fft8_X_6_R_i   | fft16_X_6_R_i | fft32_X_6_R_i;
+assign X_6_I_o   =   fft8_X_6_I_i   | fft16_X_6_I_i | fft32_X_6_I_i;
+assign X_7_R_o   =   fft8_X_7_R_i   | fft16_X_7_R_i | fft32_X_7_R_i;
+assign X_7_I_o   =   fft8_X_7_I_i   | fft16_X_7_I_i | fft32_X_7_I_i;
 
-assign X_8_R_o   =   fft16_X_8_R_i;//  | fft32_X_8_R_i;
-assign X_8_I_o   =   fft16_X_8_I_i;//  | fft32_X_8_I_i;
-assign X_9_R_o   =   fft16_X_9_R_i;// | fft32_X_9_R_i;
-assign X_9_I_o   =   fft16_X_9_I_i;//  | fft32_X_9_I_i;
-assign X_10_R_o  =   fft16_X_10_R_i;// | fft32_X_10_R_i;
-assign X_10_I_o  =   fft16_X_10_I_i;// | fft32_X_10_I_i;
-assign X_11_R_o  =   fft16_X_11_R_i;// | fft32_X_11_R_i;
-assign X_11_I_o  =   fft16_X_11_I_i;// | fft32_X_11_I_i;
-assign X_12_R_o  =   fft16_X_12_R_i;// | fft32_X_12_R_i;
-assign X_12_I_o  =   fft16_X_12_I_i;// | fft32_X_12_I_i;
-assign X_13_R_o  =   fft16_X_13_R_i;// | fft32_X_13_R_i;
-assign X_13_I_o  =   fft16_X_13_I_i;// | fft32_X_13_I_i;
-assign X_14_R_o  =   fft16_X_14_R_i;// | fft32_X_14_R_i;
-assign X_14_I_o  =   fft16_X_14_I_i;// | fft32_X_14_I_i;
-assign X_15_R_o  =   fft16_X_15_R_i;// | fft32_X_15_R_i;
-assign X_15_I_o  =   fft16_X_15_I_i;// | fft32_X_15_I_i;
+assign X_8_R_o   =   fft16_X_8_R_i  | fft32_X_8_R_i;
+assign X_8_I_o   =   fft16_X_8_I_i  | fft32_X_8_I_i;
+assign X_9_R_o   =   fft16_X_9_R_i  | fft32_X_9_R_i;
+assign X_9_I_o   =   fft16_X_9_I_i  | fft32_X_9_I_i;
+assign X_10_R_o  =   fft16_X_10_R_i | fft32_X_10_R_i;
+assign X_10_I_o  =   fft16_X_10_I_i | fft32_X_10_I_i;
+assign X_11_R_o  =   fft16_X_11_R_i | fft32_X_11_R_i;
+assign X_11_I_o  =   fft16_X_11_I_i | fft32_X_11_I_i;
+assign X_12_R_o  =   fft16_X_12_R_i | fft32_X_12_R_i;
+assign X_12_I_o  =   fft16_X_12_I_i | fft32_X_12_I_i;
+assign X_13_R_o  =   fft16_X_13_R_i | fft32_X_13_R_i;
+assign X_13_I_o  =   fft16_X_13_I_i | fft32_X_13_I_i;
+assign X_14_R_o  =   fft16_X_14_R_i | fft32_X_14_R_i;
+assign X_14_I_o  =   fft16_X_14_I_i | fft32_X_14_I_i;
+assign X_15_R_o  =   fft16_X_15_R_i | fft32_X_15_R_i;
+assign X_15_I_o  =   fft16_X_15_I_i | fft32_X_15_I_i;
 
 assign X_16_R_o  =   fft32_X_16_R_i;
 assign X_16_I_o  =   fft32_X_16_I_i;

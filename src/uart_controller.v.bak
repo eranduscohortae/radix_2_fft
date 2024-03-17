@@ -1,0 +1,293 @@
+`include "constants_uart.vh"
+
+
+module uart_controller(
+
+						input clk,
+						input rst,
+
+						// UART Low Level 
+						input  uart_bit_rx_i,
+						output uart_bit_tx_o,
+
+						// Interface 
+						input  [15:0] fft_R_coefficient_i,
+						input  [15:0] fft_I_coefficient_i,
+						input  flag_fft_finished_i,
+						input  flag_stop_rx_i,
+						input  flag_stop_tx_i,
+						output [15:0] fft_R_sample_o,
+						output [15:0] fft_I_sample_o,
+						output reg [1:0] fft_select
+						output flag_sample_valid_o,
+						
+					  );
+
+
+
+// UART Low Level Driver
+reg        finished_tx_r      , finished_rx_r;
+reg [7:0]  uart_byte_rx_r     , uart_byte_tx_r;
+reg        ena_tx_r           , ena_rx_r;
+reg        uart_bit_rx_r      , uart_bit_tx_r;
+
+
+// Interface Data
+reg [15:0] fft_R_coefficient_r, fft_I_coefficient_r, fft_R_coefficient_p, fft_I_coefficient_p;
+reg [15:0] fft_R_sample_r , fft_I_sample_r, fft_R_sample_p, fft_I_sample_p;
+reg flag_fft_finished_r, flag_stop_rx_r, flag_stop_tx_r, flag_sample_valid_r;
+
+// Internal 
+reg [4:0]  current_state, next_state;
+reg byte_cnt;
+
+
+assign flag_stop_rx     = ( (fft_select_r == SELECT_FFT8)  && (byte_cnt == 32'd8)  || 
+							(fft_select_r == SELECT_FFT16) && (byte_cnt == 32'd16) || 
+							(fft_select_r == SELECT_FFT32) && (byte_cnt == 32'd32)    );					  );
+
+assign flag_stop_tx     = ( (fft_select_r == SELECT_FFT8)  && (byte_cnt == 32'd8)  || 
+							(fft_select_r == SELECT_FFT16) && (byte_cnt == 32'd16) || 
+							(fft_select_r == SELECT_FFT32) && (byte_cnt == 32'd32)    );	
+
+uart_rx  UART_RX(
+
+					.clk_uart(),
+					.rst(rst),
+					.enable_rx_i(ena_rx_r),
+					.uart_bit_i(uart_bit_rx_i),
+
+					
+					.uart_byte_o(uart_byte_rx_r),
+					.finished_rx_o(finished_rx_r)
+
+				);
+
+uart_tx  UART_TX(
+
+					.clk_uart(),
+					.rst(rst),
+					.enable_tx_i(ena_tx_r),
+					.uart_byte_i(uart_byte_tx_r),
+
+					.uart_bit_o(uart_bit_tx_o),
+					.finished_tx_o(finished_tx_r)
+
+				);
+
+
+
+
+    
+    always @(posedge clk) begin
+        
+        if(rst) begin
+
+            current_state 			<= `FSM_IDLE;
+            fft_R_coefficient_r		<= 16'd0;
+			fft_I_coefficient_r     <= 16'd0;
+			fft_R_sample_r 			<= 16'd0; 
+			fft_I_sample_r 			<= 16'd0;
+			fft_select_r   			<=  2'd0;
+			valid_tx_r 				<= `LOW;
+			valid_rx_r              <= `LOW;
+			ena_rx_r 				<= `HIGH;
+			ena_tx_r 				<= `LOW;
+			flag_fft_finished_r     <= `LOW;
+			flag_stop_rx_r 			<= `LOW;
+			flag_stop_tx_r 			<= `LOW;
+			flag_sample_valid_r		<= `LOW;
+
+        end
+        else begin
+
+            current_state 			<= next_state;
+            fft_R_coefficient_r		<= fft_R_coefficient_i;
+			fft_I_coefficient_r     <= fft_I_coefficient_i;
+			valid_tx_r 				<= valid_tx_i;
+			valid_rx_r              <= valid_tx_i;
+
+
+
+        end
+    end
+
+
+    
+    always @(*) begin
+
+
+    	fft_R_sample_p 	     = fft_R_sample_r;
+		fft_I_sample_p 	     = fft_I_sample_r;
+
+		fft_R_coefficient_p	 = fft_R_coefficient_r;
+		fft_I_coefficient_p  = fft_I_coefficient_r;
+
+        next_state  		 = current_state;
+
+
+        flag_sample_valid_r  = `LOW;
+
+
+        // Check for 
+        if(stream_rx_finished) begin
+        	next_state = `FSM_RX_STOP;
+        end
+        if(stream_tx_finished) begin
+        	next_state = `FSM_TX_STOP;
+        end
+
+
+        case (current_state)
+
+            `FSM_IDLE: begin
+
+                fft_R_sample_r 				   = 15'd0;
+                fft_I_sample_r 				   = 15'd0;
+
+                if( (finished_rx_r == `HIGH) && (uart_byte_rx_r == `START_BYTE) ) begin
+
+                   	next_state 				   = `FSM_FFT_SELECT;
+
+                end
+
+            end
+
+            `FSM_RX_FFT_SELECT: begin
+
+                if(finished_rx_r == `HIGH) begin
+                	
+                	fft_select   			   = uart_byte_rx_r[1:0];
+                	next_state     			   = `FSM_RX_SAMPLE_R_INT;
+
+                end
+
+            end
+
+            `FSM_RX_SAMPLE_R_INT: begin
+         	
+				if(finished_rx_r == `HIGH) begin
+
+                	fft_R_sample_p[15:8]       = uart_byte_rx_r;
+                	next_state                 = `FSM_RX_SAMPLE_R_FRAC;
+
+                end
+            end
+
+            `FSM_RX_SAMPLE_R_FRAC: begin
+         	
+				if(finished_rx_r == `HIGH) begin
+
+                	fft_R_sample_p[7:0]        = uart_byte_rx_r;
+                	next_state                 = `FSM_RX_SAMPLE_I_INT;
+                	
+                end
+            end
+
+            `FSM_RX_SAMPLE_I_INT: begin
+         	
+				if(finished_rx_r == `HIGH) begin
+
+                	fft_I_sample_p[15:8]       = uart_byte_rx_r;
+                	next_state                 = `FSM_RX_SAMPLE_I_FRAC;
+
+                end
+            end
+
+            `FSM_RX_SAMPLE_I_FRAC: begin
+         	
+				if(finished_rx_r == `HIGH) begin
+
+                	fft_I_sample_p[7:0]        = uart_byte_rx_r;
+                	next_state                 = `FSM_RX_SAMPLE_R_INT;
+                	
+                end
+            end
+
+
+            `FSM_RX_STOP: begin
+                    
+                if( (finished_rx_r == `HIGH) && (uart_byte_rx_r == `STOP_BYTE) ) begin
+                    flag_fft_start_r    	   = `HIGH;
+                    next_state     			   = `FSM_TX_START;
+                end
+
+            end
+
+
+            `FSM_TX_START: begin
+         	
+				if( (finished_tx_r == `HIGH) && (flag_fft_finished_i == `HIGH) ) begin
+
+                	uart_byte_tx_r             = `START_BYTE;
+                	next_state                 = `FSM_SAMPLE_R_FRAC;
+
+                end
+            end
+
+
+            `FSM_TX_COEFF_R_INT: begin
+         	
+				if(finished_tx_r == `HIGH) begin
+
+                	uart_byte_tx_r             = fft_R_coefficient_p[15:8];
+                	next_state                 = `FSM_TX_COEFF_R_FRAC;
+
+                end
+            end
+
+            `FSM_TX_COEFF_R_FRAC: begin
+         	
+				if(finished_tx_r == `HIGH) begin
+
+                	uart_byte_tx_r             = fft_R_coefficient_p[7:0];
+                	next_state                 = `FSM_TX_COEFF_I_INT;
+
+                end
+            end
+
+            `FSM_TX_COEFF_I_INT: begin
+         	
+				if(finished_tx_r == `HIGH) begin
+
+                	uart_byte_tx_r             = fft_I_coefficient_p[15:8];
+                	next_state                 = `FSM_TX_COEFF_I_FRAC;
+
+                end
+            end
+
+            `FSM_TX_COEFF_I_FRAC: begin
+         	
+				if(finished_tx_r == `HIGH) begin
+
+                	uart_byte_tx_r             = fft_I_coefficient_p[7:0];
+                	next_state                 = `FSM_TX_COEFF_R_INT;
+
+                end
+            end
+
+
+            `FSM_TX_STOP: begin
+                    
+                if(finished_tx_r == `HIGH) begin
+
+                    uart_byte_tx_r             = `STOP_BYTE
+                    next_state     		 	   = `FSM_IDLE;
+                    ena_tx_r 				   = `LOW;
+                    ena_rx_r 				   = `HIGH;
+
+                end
+
+            end       
+
+        endcase
+
+
+    end
+
+
+
+assign valid_if_o   		= valid_if_r;
+assign flag_sample_valid_o  = flag_sample_valid_r;
+
+endmodule

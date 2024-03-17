@@ -1,4 +1,4 @@
-`include "constants.vh"
+`include "constants_fft.vh"
 
 module fft_alu(
 					input wire clk,
